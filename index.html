@@ -4,8 +4,8 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilo.css">
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="css/estilo.css">
+    <script src="javascript/juego.js"></script>
     <title>SUDOKU</title>
 
 </head>
@@ -18,90 +18,119 @@
 
     <main class="main-game">
 
-        <div class="main-sudoku-grid">
+        <div class="main-sudoku-grid" id="celda">
 
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
-            <div class="main-sudoku-grid"></div>
+            <!-- FILA 1 -->
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell border-right">0</div>
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell border-right">0</div>
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell">1</div>
 
+            <!-- FILA 2 -->
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell border-right">0</div>
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell border-right">0</div>
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell">1</div>
+
+            <!-- FILA 3 -->
+            <div class="main-sudoku-cell border-bottom">5</div>
+            <div class="main-sudoku-cell border-bottom">5</div>
+            <div class="main-sudoku-cell border-right border-bottom">50</div>
+            <div class="main-sudoku-cell border-bottom">5</div>
+            <div class="main-sudoku-cell border-bottom">5</div>
+            <div class="main-sudoku-cell border-right border-bottom">50</div>
+            <div class="main-sudoku-cell border-bottom">5</div>
+            <div class="main-sudoku-cell border-bottom">5</div>
+            <div class="main-sudoku-cell border-bottom">5</div>
+
+            <!-- FILA 4 -->
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell border-right">0</div>
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell border-right">0</div>
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell">1</div>
+
+            <!-- FILA 5 -->
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell border-right">0</div>
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell border-right">0</div>
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell">1</div>
+
+            <!-- FILA 6 -->
+            <div class="main-sudoku-cell border-bottom">5</div>
+            <div class="main-sudoku-cell border-bottom">5</div>
+            <div class="main-sudoku-cell border-right border-bottom">50</div>
+            <div class="main-sudoku-cell border-bottom">5</div>
+            <div class="main-sudoku-cell border-bottom">5</div>
+            <div class="main-sudoku-cell border-right border-bottom">50</div>
+            <div class="main-sudoku-cell border-bottom">5</div>
+            <div class="main-sudoku-cell border-bottom">5</div>
+            <div class="main-sudoku-cell border-bottom">5</div>
+
+            <!-- FILA 7 -->
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell border-right">0</div>
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell border-right">0</div>
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell">1</div>
+
+            <!-- FILA 8 -->
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell border-right">0</div>
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell border-right">0</div>
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell">1</div>
+
+            <!-- FILA 9 -->
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell border-right">0</div>
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell border-right">0</div>
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell">1</div>
+            <div class="main-sudoku-cell">1</div>
+
+        </div>
+
+        <div class="main-numeros-grid">
+            <div class="main-numeros-cell">1</div>
+            <div class="main-numeros-cell">2</div>
+            <div class="main-numeros-cell">3</div>
+            <div class="main-numeros-cell">4</div>
+            <div class="main-numeros-cell">5</div>
+            <div class="main-numeros-cell">6</div>
+            <div class="main-numeros-cell">7</div>
+            <div class="main-numeros-cell">8</div>
+            <div class="main-numeros-cell">9</div>
         </div>
 
     </main>
