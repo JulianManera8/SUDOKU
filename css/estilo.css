@@ -5,15 +5,26 @@ body {
     flex-direction: column;
     justify-content: center;
     text-align: center;
+}    
+
+/*-----------------TITULO-----------------*/
+.titulo  {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    align-items: center;
 }
+
+
 
 /*-----------------GRILLA DE TABLERO-----------------*/
 .main-game {
-    margin: 30px;
+    margin: 30px auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    max-width: 80vw;
 }
 
 .main-sudoku-grid {
@@ -21,17 +32,18 @@ body {
     grid-template-columns: repeat(9, auto);
     gap: 20px;
     justify-content: center;
+    
 }
 
 .main-sudoku-cell {
     border: 1px solid rgba(0, 0, 0, 0.116);
-    width: 6vw;
-    height: 6vh;
+    width: 4.5vw;
+    padding: 5px;
     justify-content: center;
     align-items: center;
     margin: -10px;
     display: flex;
-    z-index: .2;
+    font-size: clamp(1rem, 2.5vw, 7px);
 }
 
 .border-right {
@@ -45,31 +57,39 @@ body {
 }
 
 .main-sudoku-cell:hover {
-    background-color: rgba(173, 216, 230, 0.233);
-    transition: 0.2s;
+    background-color: rgba(173, 216, 230, 0.424);
 }
 .main-sudoku-cell:not(:hover) {
-    transition: 0.2s;
+    transition: 0.1s;
 }
 
 
+/*----------------ESTILOS DESDE JS----------------*/
+.celdaActiva {
+    background-color: #3ea5ff5f !important;
+}
+
+.fcActiva {
+    background-color: rgba(173, 216, 230, 0.424);
+}
 
 /*-------------GRILLA DE NUMEROS PARA COLOCAR-------------*/
 .main-numeros-grid {
     display: flex;
     justify-content: center;
-    margin-top: 6%;
+    margin-top: 40px;
     gap: 10px;
 }
 
 .main-numeros-cell {
     width: 5vw;
-    height: 6vh;
+    max-width: 40px;
     border: 1px solid rgba(0, 0, 0, 0.116);
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
+    font-size: clamp(1rem, 3vw, 8px);
 }
 
 .main-numeros-cell:hover {
@@ -79,6 +99,9 @@ body {
 .main-numeros-cell:not(:hover) {
     transition: 0.2s;
 }
-
+.main-numeros-cell:active {
+    background-color: rgba(231, 172, 83, 0.78);
+    ;
+}
 
 
