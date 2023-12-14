@@ -35,7 +35,7 @@ body {
     
 }
 
-.main-sudoku-cell {
+.celda {
     border: 1px solid rgba(0, 0, 0, 0.116);
     width: 4.5vw;
     padding: 5px;
@@ -56,10 +56,10 @@ body {
     z-index: 1;
 }
 
-.main-sudoku-cell:hover {
+.celda:hover {
     background-color: rgba(173, 216, 230, 0.424);
 }
-.main-sudoku-cell:not(:hover) {
+.celda:not(:hover) {
     transition: 0.1s;
 }
 
@@ -101,7 +101,6 @@ body {
 }
 .main-numeros-cell:active {
     background-color: rgba(231, 172, 83, 0.78);
-    ;
 }
 
 
