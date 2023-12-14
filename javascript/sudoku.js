@@ -363,6 +363,7 @@ function poblarTablero() {
         numeros.innerHTML = i;
         numeros.id = i;
         numeros.classList.add("main-numeros-cell", "numero");
+        numeros.addEventListener("click", leerNumero);
 
         gridNumeros.appendChild(numeros);
     };
@@ -375,11 +376,12 @@ function poblarTablero() {
             const celda = document.createElement("div");
             celda.id = r.toString() + "-" + c.toString();
             celda.classList.add("celda");
-            
-            // SEGUIR DESDE QUE LE DA FUNCIONALIDAD AL JUEGO, DESDE MINUTO 16.28
-            celda.innerHTML = r.toString() + "-" + c.toString();
+            celda.addEventListener("click", celdaSeleccionada);
 
-            
+            //aca llenamos el tablero con el arreglo del tablero que elijamos
+            if (tablero1[r][c] != "-" ) {
+                celda.innerHTML = tablero1[r][c]
+            }
 
             gridSudoku.appendChild(celda);
 
@@ -393,3 +395,25 @@ function poblarTablero() {
     })
 
 }
+
+function leerNumero() {
+    numeroSelec = this.textContent
+    ponerNumero(numeroSelec)
+}
+
+function celdaSeleccionada() {
+    celdaSelec = this.textContent
+    if (celdaSelec != '') {
+        //resaltarMismoNumero(); //si tiene un numero entonces resaltame esos numeros
+    } else {
+        ponerNumero(celdaSelec);
+    }
+
+}
+
+function ponerNumero(numeroSelec) {
+
+}
+
+
+//SEGUIR DESDE QUE ME FALTA SOLO PONER EL NUMERO EN EL TABLERO
