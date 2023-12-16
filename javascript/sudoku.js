@@ -363,8 +363,11 @@ function poblarTablero() {
         numeros.innerHTML = i;
         numeros.id = i;
         numeros.classList.add("main-numeros-cell", "numero");
-        numeros.addEventListener("click", leerNumero);
 
+        //QUE LEA EL NUMERO QUE SELECCIONAMOS PARA PONERLO DPS EN EL TABLERO
+        numeros.addEventListener("click", leerNumeroSelec);
+
+        //crear efectivamente los numeros para elegir
         gridNumeros.appendChild(numeros);
     };
 
@@ -376,13 +379,37 @@ function poblarTablero() {
             const celda = document.createElement("div");
             celda.id = r.toString() + "-" + c.toString();
             celda.classList.add("celda");
-            celda.addEventListener("click", celdaSeleccionada);
+
+            //seleccionar celda para completar el numero que falta
+            celda.addEventListener("click", function () {
+                ponerNumero(celda);
+            });
 
             //aca llenamos el tablero con el arreglo del tablero que elijamos
+            //ESTE EJEMPLO ES CON EL TABLERO1, SI QUIERO OTRO 
+            //TENGO Q PONER TABLERO 2 en la condicion del IF y tmb abajo de eso
             if (tablero1[r][c] != "-" ) {
                 celda.innerHTML = tablero1[r][c]
             }
+            
+            //QUE NO HAGA HOVER CON LAS CELDAS QUE ESTABAN DESDE UN PRINCIPIO
+            if (celda.textContent != "") {
+                celda.classList.add("conNumeroInicio");
+                celda.addEventListener("mouseenter", function() {
+                    celda.style.backgroundColor = 'rgba(187, 187, 187, 0.245)'
+                });
+                
+            }
+            
+            //PONERLE LAS LINEAS QUE SEPARAN CUADRICULAS
+            if(r === 2 || r === 5) {
+                celda.classList.add("border-bottom");
+            }
+            if(c === 2 || c === 5) {
+                celda.classList.add("border-right");
+            }
 
+            //CREAR EFECTIVAMENTE EL TABLERO DEL SUDOKU
             gridSudoku.appendChild(celda);
 
         };
@@ -390,30 +417,33 @@ function poblarTablero() {
 
     let celdas = document.querySelectorAll('.celda');
     celdasArreglo = [];
-        celdas.forEach(celda => {
+
+    celdas.forEach(celda => {
         celdasArreglo.push(celda)
+    })
+
+    let numeros = document.querySelectorAll('.numero')
+    numerosArreglo = [];
+
+    numeros.forEach(numero => {
+        numerosArreglo.push(numero)
     })
 
 }
 
-function leerNumero() {
-    numeroSelec = this.textContent
-    ponerNumero(numeroSelec)
+function leerNumeroSelec() {
+    numeroSelec = this.textContent;
+    return numeroSelec
 }
 
-function celdaSeleccionada() {
-    celdaSelec = this.textContent
-    if (celdaSelec != '') {
-        //resaltarMismoNumero(); //si tiene un numero entonces resaltame esos numeros
-    } else {
-        ponerNumero(celdaSelec);
+function ponerNumero(celda) {
+
+    if (numeroSelec != null && celda.textContent == '') {
+        celda.textContent = numeroSelec;
+
+    } else if (celda != null) {
+        console.log('no se puede cambiar un numero ya puesto')
     }
-
-}
-
-function ponerNumero(numeroSelec) {
-
 }
 
 
-//SEGUIR DESDE QUE ME FALTA SOLO PONER EL NUMERO EN EL TABLERO

@@ -69,8 +69,8 @@ body {
     background-color: #3ea5ff3d !important;
 }
 
-.fcActiva {
-    background-color: rgba(173, 216, 230, 0.424);
+.conNumeroInicio {
+    background-color: rgba(187, 187, 187, 0.245);
 }
 
 /*-------------GRILLA DE NUMEROS PARA COLOCAR-------------*/
@@ -99,7 +99,7 @@ body {
 .main-numeros-cell:not(:hover) {
     transition: 0.2s;
 }
-.main-numeros-cell:active {
+.numeroActivo {
     background-color: rgba(231, 172, 83, 0.78);
 }
 
