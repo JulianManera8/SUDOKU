@@ -19,13 +19,29 @@ body {
 
 /*-----------------GRILLA DE TABLERO-----------------*/
 .main-game {
-    margin: 30px auto;
+    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
     max-width: 80vw;
 }
+
+.main-errores-timer {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.errores b {
+    color: rgb(255, 48, 2);
+}
+
+.btn-pausa-reset img {
+    width: 4vw;
+    margin: auto;
+}
+
 
 .main-sudoku-grid {
     display: grid;
@@ -90,6 +106,7 @@ body {
     align-items: center;
     border-radius: 50%;
     font-size: clamp(1rem, 3vw, 8px);
+    cursor: pointer;
 }
 
 .main-numeros-cell:hover {

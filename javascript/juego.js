@@ -37,13 +37,10 @@ function colorNumero(e) {
 }
 
 
-function limpiarColorCeldas(e) {
+function limpiarColorCeldas() {
     //selecciono todos los elementos que tengan la clase celda para recorrerlos 
     // y ver sacarle el activo, para luego darselo al que yo toque en colorCelda();
    
-    // if (e.target != tablero || e.target != numero) {
-    //     console.log('se ejecutaria el de celdas')
-    // }
 
     celdasArreglo.forEach(celda => {
         celda.classList.remove('celdaActiva');
@@ -52,11 +49,9 @@ function limpiarColorCeldas(e) {
 
 }
 
+
 function limpiarColorNumeros() {
 
-    // if (e.target != numero) {
-    //     console.log('se ejecutaria el de numeros')
-    // }
     
     numerosArreglo.forEach(numero => {
         numero.classList.remove('numeroActivo')
