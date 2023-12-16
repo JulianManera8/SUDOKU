@@ -86,7 +86,22 @@ body {
 }
 
 .conNumeroInicio {
-    background-color: rgba(187, 187, 187, 0.245);
+    background-color: rgba(246, 226, 183, 0.245);
+}
+
+.numeroEquivocado {
+    background: radial-gradient(circle, rgb(255, 255, 255), rgba(251, 0, 0, 0.201));
+    color: red;
+}
+
+.numeroBien {
+    color: green;
+
+}
+
+.numerosIgualesTablero {
+    background-color: rgba(0, 0, 0, 0.278);
+
 }
 
 /*-------------GRILLA DE NUMEROS PARA COLOCAR-------------*/
@@ -98,14 +113,14 @@ body {
 }
 
 .main-numeros-cell {
-    width: 5vw;
+    width: 6vw;
     max-width: 40px;
     border: 1px solid rgba(0, 0, 0, 0.116);
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    font-size: clamp(1rem, 3vw, 8px);
+    font-size: clamp(1.2rem, 3.5vw, 9px);
     cursor: pointer;
 }
 

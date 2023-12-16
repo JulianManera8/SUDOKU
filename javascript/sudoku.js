@@ -1,9 +1,14 @@
-//funcionalidad del juego
+//FUNCIONALIDAD DEL JUEGO
+
+//iniciar las variables que me toman los valores de las celdas y numeros que toco
 var numeroSelec = null;
 var celdaSelec = null;
 
+//iniciar contador de errores
 var errores = 0;
 
+// DISTITNOS tableros de sudoku
+//         ESTO PROXIMAMENTE PASA PARA LA BASE DE DATOS
 var tablero1 = [
     "--74916-5",
     "2---6-3-9",
@@ -349,7 +354,7 @@ var solucion15 = [
     "268573941"
 ];
 
-
+//apenas cargue la pag, se llena el tablero
 window.onload = function () {
     poblarTablero();
 }
@@ -367,6 +372,16 @@ function poblarTablero() {
         //QUE LEA EL NUMERO QUE SELECCIONAMOS PARA PONERLO DPS EN EL TABLERO
         numeros.addEventListener("click", leerNumeroSelec);
 
+        // si toco en algun lugar q no sea los numeros ni el tablero, me desSelecciona
+        numeros.addEventListener("click", function () {
+            window.addEventListener('click', (e) => {
+                if (!e.target.classList.contains('celda') && !e.target.classList.contains('numero')) {
+                    numeros.classList.remove('numeroActivo');
+                    numeroSelec = null
+                }
+            })
+        });
+
         //crear efectivamente los numeros para elegir
         gridNumeros.appendChild(numeros);
     };
@@ -383,6 +398,13 @@ function poblarTablero() {
             //seleccionar celda para completar el numero que falta
             celda.addEventListener("click", function () {
                 ponerNumero(celda);
+
+                // si toco en algun lugar q no sea los numeros ni el tablero, me desSelecciona
+                window.addEventListener('click', (e) => {
+                    if (!e.target.classList.contains('celda') && !e.target.classList.contains('numero')) {
+                        celda.classList.remove('celdaActiva');
+                    }
+                })
             });
 
             //aca llenamos el tablero con el arreglo del tablero que elijamos
@@ -396,7 +418,7 @@ function poblarTablero() {
             if (celda.textContent != "") {
                 celda.classList.add("conNumeroInicio");
                 celda.addEventListener("mouseenter", function() {
-                    celda.style.backgroundColor = 'rgba(187, 187, 187, 0.245)'
+                    celda.style.backgroundColor = 'rgba(246, 226, 183, 0.245)'
                 });
                 
             }
@@ -415,9 +437,11 @@ function poblarTablero() {
         };
     };
 
+    //creamos un arreglo con todas las celdas
     let celdas = document.querySelectorAll('.celda');
     celdasArreglo = [];
 
+    
     celdas.forEach(celda => {
         celdasArreglo.push(celda)
     })
@@ -438,12 +462,51 @@ function leerNumeroSelec() {
 
 function ponerNumero(celda) {
 
-    if (numeroSelec != null && celda.textContent == '') {
-        celda.textContent = numeroSelec;
 
-    } else if (celda != null) {
-        console.log('no se puede cambiar un numero ya puesto')
-    }
+    //  ahora obtenemos la coordenada de la celda que puse 
+    // para corroborar que este bien lo que estoy poniendo
+    let coordenadas = celda.id.split('-'); // aca me da dos arreglos distitnos con r y c
+    let r = parseInt(coordenadas[0]); //le pasamos a numero el primer parametro del id al r
+    let c = parseInt(coordenadas[1]); //le pasamosa a numero el segundo parametro del id a c
+
+    //si seleccionamos un numero, y la celda que tocamos esta vacia, entonces
+    // ponemos un numero
+    if (numeroSelec != null && celda.textContent == '' || celda.classList.contains('numeroEquivocado')) {
+
+        //comprobamos que el numero este bien segun la solucion
+        if (solucion1[r][c] == numeroSelec) {
+            //si el nuemro seleccionado coincide con el indice de la solucion, joya
+            celda.textContent = numeroSelec
+            celda.classList.remove('numeroEquivocado');
+            celda.classList.add('numeroBien');
+            celda.classList.remove('celdaActiva');
+
+        } else {
+            //si no conicide, aumentamos el error
+            errores++;
+            const divErrores = document.getElementById('errores').innerHTML = errores
+            
+            ///ponemos el numero pero le damos la categoria de que esta mal
+            celda.textContent = numeroSelec;
+            celda.classList.add('numeroEquivocado')
+            
+        }
+
+    } else if (celda.textContent != '') {
+        // console.log(tablero)
+        // celdasArreglo.forEach(celdaIgual => {
+        //     if (celda.textContent == celdaIgual.textContent) {
+        //         celda.classList.add('numerosIgualesTablero');
+        //     }
+        // })
+    } 
+
+    //ahora le pasamos que si coincide con la solucion1 en [r][c] el celda.id entonces que me ponga el numero
+
 }
+
+
+
+
 
 
