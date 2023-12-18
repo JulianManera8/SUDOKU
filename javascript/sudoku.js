@@ -8,7 +8,7 @@ var celdaSelec = null;
 var errores = 0;
 
 // DISTITNOS tableros de sudoku
-//         ESTO PROXIMAMENTE PASA PARA LA BASE DE DATOS
+//ESTO PROXIMAMENTE PASA PARA LA BASE DE DATOS
 var tablero1 = [
     "--74916-5",
     "2---6-3-9",
@@ -356,7 +356,10 @@ var solucion15 = [
 
 //apenas cargue la pag, se llena el tablero
 window.onload = function () {
+    // if (cronometrar) {
+    // }
     poblarTablero();
+
 }
 
 function poblarTablero() {
@@ -460,6 +463,7 @@ function leerNumeroSelec() {
     return numeroSelec
 }
 
+
 function ponerNumero(celda) {
 
 
@@ -505,6 +509,101 @@ function ponerNumero(celda) {
 
 }
 
+
+// FUNCIONALIDAD DEL TIMER
+
+let tiempoRef = Date.now()
+let cronometrar = false
+let acumulado = 0
+
+const btnInicio = document.getElementById('btn-play')
+const btnPausa = document.getElementById('btn-pausa')
+const btnReset = document.getElementById('btn-reset')
+const tableroCss = document.querySelector('.main-sudoku-grid')
+
+eventos();
+function eventos() {
+    btnInicio.addEventListener('click', () => {
+        cronometrar = true
+        btnPausa.removeAttribute('hidden')
+        btnInicio.setAttribute('hidden', true)
+
+        tableroCss.style.opacity = '100'
+
+
+    })
+
+    btnPausa.addEventListener('click', () => {
+        cronometrar = false
+        btnInicio.removeAttribute('hidden')
+        btnPausa.setAttribute('hidden', true)
+
+        tableroCss.style.opacity = '20%'
+
+
+    })
+
+    btnReset.addEventListener('click', resetJuego)
+
+
+}
+
+setInterval(() => {
+    let tiempo = document.getElementById("timer")
+    
+    if (cronometrar) {
+        acumulado += Date.now() - tiempoRef
+    } 
+
+    tiempoRef = Date.now();
+    tiempo.innerHTML = formatearMS(acumulado)
+
+}, 1000/60)
+
+//ahora hay que formatear el acumulado que nos lo da en milisegundos (MS)
+function formatearMS(tiempo_ms) {
+    let MS = tiempo_ms % 1000
+    let S = Math.floor(((tiempo_ms - MS) / 1000) % 60)
+    let M = Math.floor((S / 60) % 60)
+    let H = Math.floor( (M / 60 ))
+
+    Number.prototype.ceros = function(n) {
+        return (this+"").padStart(n, 0)
+    }
+
+    return M.ceros(2) + ":" + S.ceros(2);
+
+}
+
+function resetJuego() {
+
+    var confirmar = confirm('¿Quieres resetear el juego? Se perdera el progreso que hayas hecho')
+    
+    if (confirmar) {
+        cronometrar = false
+        acumulado = 0
+        btnInicio.removeAttribute('hidden')
+        btnPausa.setAttribute('hidden', true)
+        tableroCss.style.opacity = '5%'
+        errores = 0
+        
+        // let celdasReset = celdasArreglo.filter(celda => celda.classList.contains('conNumeroInicio'))
+
+        // celdasReset.textContent = '';
+
+
+        celdasArreglo.forEach(celda => {
+           if( !celda.classList.contains('conNumeroInicio') ) {
+                celda.textContent = '';
+                celda.classList.remove('numeroEquivocado')
+                celda.classList.remove('numeroBien')
+            }
+
+        })
+    }
+
+
+}
 
 
 

@@ -1,6 +1,7 @@
 // HACER QUE MANTENGA EL COLOR LA CELDA SELECCIONADA
 
 const tablero = document.getElementById('tablero');
+const celdas = document.querySelectorAll('.celda')
 const numero = document.getElementById('grillaNumeros');
 
 //crear arreglo con todas las celdas
