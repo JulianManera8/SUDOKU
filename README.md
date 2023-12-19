@@ -2,10 +2,6 @@
 
 ------------TODOLIST------------
 
-    = darle hovers y active a los botones de pausa, inicio y reset
-
-    - cuando toco un numero en algun celda Y en algun numero para poner, que me seleccione ese mismo numero en el resto del tablero.
-
     - cuando complete los 9 numeros de un numero, ponerlo bien opaco en la grilla de numeros para poner.
 
     - hacer el responsive de todo

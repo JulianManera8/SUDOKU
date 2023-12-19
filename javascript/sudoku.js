@@ -469,7 +469,39 @@ function poblarTablero() {
 
 function leerNumeroSelec() {
     numeroSelec = this.textContent;
+
+    celdasArreglo.forEach(celda => {
+        if (celda.textContent === numeroSelec) {
+
+            celda.style.backgroundColor = 'rgba(80, 162, 255, 0.500)'
+            setTimeout(() => {
+                if (celda.classList.contains('conNumeroInicio')) {
+                    celda.style.backgroundColor = 'rgba(246, 226, 183, 0.245)'
+                } else {
+                    celda.style.backgroundColor = '#ffffff'
+                }
+            }, 3500);
+        }
+    })
+
+    numeroCompletado(numeroSelec)
+
     return numeroSelec
+}
+
+function numeroCompletado(numero) {
+    celdasArreglo.forEach(celda => {
+        if (celda.textContent === numero) {
+
+            let contadorNumerosPuestos = parseInt(celda.length)
+            if (contadorNumerosPuestos === 9) {
+                console.log('aca se desactiva')
+            } else {
+                console.log('tdv no')
+            }
+            
+        }
+    })
 }
 
 
@@ -494,6 +526,10 @@ function ponerNumero(celda) {
             celda.classList.add('numeroBien');
             celda.classList.remove('celdaActiva');
 
+        } else if (numeroSelec == null) {
+            celda.textContent = '';
+            celda.classList.remove('numeroEquivocado');
+
         } else {
             //si no conicide, aumentamos el error
             errores++;
@@ -504,17 +540,26 @@ function ponerNumero(celda) {
             celda.classList.add('numeroEquivocado')
             
         }
+        
 
     } else if (celda.textContent != '') {
-        // console.log(tablero)
-        // celdasArreglo.forEach(celdaIgual => {
-        //     if (celda.textContent == celdaIgual.textContent) {
-        //         celda.classList.add('numerosIgualesTablero');
-        //     }
-        // })
+
+        let numeroCelda = celda.textContent
+
+        celdasArreglo.forEach(celda => {
+            if (celda.textContent === numeroCelda) {
+
+
+                celda.style.backgroundColor = 'rgba(80, 162, 255, 0.500)'
+                setTimeout(() => {
+                    celda.style.backgroundColor = 'rgba(246, 226, 183, 0.245)'
+                }, 2500);
+            }
+        })
     } 
 
 }
+
 
 
 // FUNCIONALIDAD DEL TIMER
@@ -732,17 +777,21 @@ setInterval(() => {
 //ahora hay que formatear el acumulado que nos lo da en milisegundos (MS)
 function formatearMS(tiempo_ms) {
     let MS = tiempo_ms % 1000
-    let S = Math.floor(((tiempo_ms - MS) / 1000) % 60)
-    let M = Math.floor((S / 60) % 60)
-    let H = Math.floor( (M / 60 ))
-
-    Number.prototype.ceros = function(n) {
-        return (this+"").padStart(n, 0)
+    
+    
+    let St = Math.floor(((tiempo_ms - MS) / 1000))
+    
+    let S = St%60
+    let M = Math.floor((St / 60) % 60)
+    let H = Math.floor((St/60 / 60))
+    Number.prototype.ceros = function (n) {
+        return (this + "").padStart(n, 0)
     }
 
-    return M.ceros(2) + ":" + S.ceros(2);
-
+    return H.ceros(2) + ":" + M.ceros(2) + ":" + S.ceros(2)
+    
 }
+
 
 
 

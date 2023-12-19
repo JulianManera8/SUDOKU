@@ -1,10 +1,16 @@
 /*CONECTADO*/
 
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap');
+
+/*font-family: 'Kanit', sans-serif;*/
+
 body {
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    font-family: 'Kanit', sans-serif;
+
 }    
 
 /*-----------------TITULO-----------------*/
@@ -14,6 +20,8 @@ body {
     gap: 30px;
     align-items: center;
     color: #001253;
+    font-family: 'Kanit', sans-serif;
+    font-size: 120%;
 }
 
 
@@ -25,25 +33,27 @@ body {
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    max-width: 100vw;
 }
 
 .main-errores-timer {
     display: flex;
-    justify-content: center;
-    width: 40vw;
-    margin: auto
+    justify-content: space-between;
+    width: 50vw;
+    margin: auto;
+    text-align: center;
+    align-items: center;
 }
 
 .errores b {
     color: rgb(255, 48, 2);
+    font-size: 120%;
 }
 
 .btn-pausa-reset {
     display: flex;
     text-align: center;
     justify-content: center;
-    width: 70vw;
+    width: 80vw;
     min-width: 20px;
     margin: auto;
     cursor: pointer;
@@ -52,7 +62,7 @@ body {
 }
 
 .btn-pausa-reset img {   
-    width: 40px;
+    width: 35px;
     z-index: 1000;
     margin: 0 10px;
 }
@@ -60,12 +70,40 @@ body {
 #btn-play {
     opacity: 0;
 }
+#btn-play:hover {
+    scale: 110%;
+    transition: 0.2s;
+}
+#btn-play:active {
+    scale: 95%;
+    transition: 0.2s;
+}
+
 #btn-pausa {
     opacity: 0;
 }
+#btn-pausa:hover {
+    scale: 110%;
+    transition: 0.2s;
+}
+#btn-pausa:active {
+    scale: 95%;
+    transition: 0.2s;
+}
+
 #btn-reset {
     opacity: 0;
 }
+#btn-reset:hover {
+    scale: 110%;
+    transition: 0.2s;
+}
+#btn-reset:active {
+    scale: 95%;
+    transition: 0.2s;
+}
+
+
 #btn-jugar {
     position: absolute;
     left: 0;
@@ -164,11 +202,9 @@ button:hover .button-text {
 
 /* FUNCIONALIDAD DE JS PARA DISENOS*/
 
-
-.apareceBTN {
-    opacity: 100%;
+.duplicada {
+    background-color: rgba(80, 162, 255, 0.993);
 }
-
 
 
 
@@ -180,7 +216,7 @@ button:hover .button-text {
     justify-content: center;
     text-align: center;
     margin: auto;
-    max-width: 500px;
+    max-width: 400px;
     opacity: 10%;
 }
 
@@ -188,7 +224,7 @@ button:hover .button-text {
     border: 1px solid rgba(0, 0, 0, 0.116);
     width: 5vw;
     height: 5vh;
-    max-width: 55.5px !important;
+    max-width: 45px !important;
     justify-content: center;
     align-items: center;
     margin: -10px;
@@ -238,6 +274,10 @@ button:hover .button-text {
 
 }
 
+
+.apareceBTN {
+    opacity: 100%;
+}
 /*-------------GRILLA DE NUMEROS PARA COLOCAR-------------*/
 .main-numeros-grid {
     display: flex;
@@ -249,7 +289,8 @@ button:hover .button-text {
 
 .main-numeros-cell {
     width: 6vw;
-    max-width: 50px;
+    max-width: 40px;
+    height: 35px;
     border: 1px solid rgba(0, 0, 0, 0.283);
     display: flex;
     justify-content: center;
