@@ -7,6 +7,10 @@ var celdaSelec = null;
 //iniciar contador de errores
 var errores = 0;
 
+//AL PRINCIPIO ARRANCA TODO COMO NO CLICKEABLE PQ HAY Q DARLE PLAY
+let esPicable = false;
+
+
 // DISTITNOS tableros de sudoku
 //ESTO PROXIMAMENTE PASA PARA LA BASE DE DATOS
 var tablero1 = [
@@ -366,7 +370,9 @@ function poblarTablero() {
 
     //grilla de los numeros para seleccionar
     const gridNumeros = document.querySelector('#grillaNumeros')
+    
     for (i = 1; i <= 9; i++) {
+
         const numeros = document.createElement("div");
         numeros.innerHTML = i;
         numeros.id = i;
@@ -400,7 +406,10 @@ function poblarTablero() {
 
             //seleccionar celda para completar el numero que falta
             celda.addEventListener("click", function () {
-                ponerNumero(celda);
+                if (esPicable) {
+                    ponerNumero(celda);
+                }
+                
 
                 // si toco en algun lugar q no sea los numeros ni el tablero, me desSelecciona
                 window.addEventListener('click', (e) => {
@@ -466,7 +475,7 @@ function leerNumeroSelec() {
 
 function ponerNumero(celda) {
 
-
+    
     //  ahora obtenemos la coordenada de la celda que puse 
     // para corroborar que este bien lo que estoy poniendo
     let coordenadas = celda.id.split('-'); // aca me da dos arreglos distitnos con r y c
@@ -505,8 +514,6 @@ function ponerNumero(celda) {
         // })
     } 
 
-    //ahora le pasamos que si coincide con la solucion1 en [r][c] el celda.id entonces que me ponga el numero
-
 }
 
 
@@ -519,27 +526,127 @@ let acumulado = 0
 const btnInicio = document.getElementById('btn-play')
 const btnPausa = document.getElementById('btn-pausa')
 const btnReset = document.getElementById('btn-reset')
+const btnJugar = document.getElementById('btn-jugar')
 const tableroCss = document.querySelector('.main-sudoku-grid')
+const btnContenedor = document.querySelector('.btn-pausa-reset')
+const erroresCss = document.querySelector('.div-errores')
+const numerosContenedor = document.querySelector('.main-numeros-grid')
+let tiempo = document.getElementById("timer")
+
+    
+
 
 eventos();
 function eventos() {
+
+    btnJugar.addEventListener('click', () => {
+        cronometrar = true;
+        esPicable = true;
+
+        btnJugar.style.opacity = '0';
+        btnJugar.style.transition = ' all 0.5s ease';
+
+        setTimeout(() => {
+
+            setTimeout(() => {
+            
+                btnJugar.setAttribute('hidden', true);
+                btnInicio.setAttribute('hidden', true);
+                
+                btnReset.style.opacity = '100%';
+                btnReset.style.transition = 'all 0.5s ease';
+
+                btnPausa.style.opacity = '100%';
+                btnPausa.style.transition = 'all 0.5s ease';
+    
+                
+            }, 1500);
+
+            setTimeout(() => {
+                btnPausa.removeAttribute('hidden')
+                btnReset.removeAttribute('hidden')
+
+                tableroCss.style.opacity = '100'
+                tableroCss.style.transition = 'all 0.5s ease';
+
+                numerosContenedor.style.opacity = '100'
+                numerosContenedor.style.transition = 'all 0.5s ease';
+                
+            }, 700);
+
+        }, 700);
+
+
+    })
+
     btnInicio.addEventListener('click', () => {
-        cronometrar = true
-        btnPausa.removeAttribute('hidden')
-        btnInicio.setAttribute('hidden', true)
+        cronometrar = true;
+        esPicable = true;
+
+
+        setTimeout(() => {
+            btnPausa.removeAttribute('hidden')
+            btnPausa.style.opacity = '100%';
+            btnPausa.style.transition = 'all 0.5s ease'
+
+            btnInicio.setAttribute('hidden', true)
+            btnReset.removeAttribute('hidden')
+        }, 700);
+        
+
 
         tableroCss.style.opacity = '100'
+        tableroCss.style.transition = 'all 1s ease';
 
+        numerosContenedor.style.opacity = '100'
+        numerosContenedor.style.transition = 'all 1s ease';
+
+        btnContenedor.classList.add('moverArriba')
+
+        erroresCss.style.scale  = '100%';
+        erroresCss.style.transition = 'all 1s ease'
+
+        tiempo.style.scale  = '100%';
+        tiempo.style.transition = 'all 1s ease'
 
     })
 
     btnPausa.addEventListener('click', () => {
         cronometrar = false
-        btnInicio.removeAttribute('hidden')
-        btnPausa.setAttribute('hidden', true)
 
-        tableroCss.style.opacity = '20%'
+        esPicable = false;
 
+        setTimeout(() => {
+            btnPausa.setAttribute('hidden', true)
+            btnInicio.removeAttribute('hidden')
+        }, 500);
+
+        tableroCss.style.opacity = '10%'
+        tableroCss.style.transition = 'all 0.5s ease';
+        numerosContenedor.style.opacity = '10%'
+        numerosContenedor.style.transition = 'all 0.5s ease';
+
+        btnContenedor.classList.remove('moverArriba')
+        btnContenedor.style.transition = 'all 1s ease'
+
+
+        btnInicio.style.opacity = '100%';
+        btnInicio.style.transition = 'all 0.5s ease'
+
+
+
+        btnReset.style.transition = 'all 1s ease'
+        
+
+
+
+
+
+        erroresCss.style.scale  = '150%';
+        erroresCss.style.transition = 'all 1s ease';
+        tiempo.style.scale  = '150%';
+        tiempo.style.transition = 'all 1s ease';
+        
 
     })
 
@@ -548,8 +655,70 @@ function eventos() {
 
 }
 
+
+function resetJuego() {
+
+    var confirmar = confirm('¿Quieres resetear el juego? Se perdera el progreso que hayas hecho')
+    
+    if (confirmar) {
+        cronometrar = false
+        acumulado = 0
+        esPicable = false;
+
+        btnReset.style.opacity = '0'
+        btnPausa.style.opacity = '0'
+        btnInicio.style.opacity = '0'
+        
+        btnReset.style.transition = 'all 0.8s ease'
+        btnPausa.style.transition = 'all 0.8s ease'
+        btnInicio.style.transition = 'all 0.8s ease'
+
+        setTimeout(() => {
+            btnJugar.style.opacity = '100%'
+            btnJugar.style.transition = 'all 0.5s ease'
+
+            btnReset.setAttribute('hidden', true)
+            btnPausa.setAttribute('hidden', true)
+
+            btnContenedor.classList.remove('moverArriba')
+
+            setTimeout(() => {
+                
+                btnJugar.removeAttribute('hidden')
+                btnInicio.setAttribute('hidden', true)
+                
+
+            }, 900);
+
+        }, 1200);
+
+        tableroCss.style.opacity = '10%'
+        numerosContenedor.style.opacity = '10%'
+
+        erroresCss.style.scale  = '100%';
+        erroresCss.style.transition = 'all 1s ease'
+
+        tiempo.style.scale  = '100%';
+        tiempo.style.transition = 'all 1s ease'
+
+        let erroresHtml = document.querySelector('#errores')
+        errores = errores*0
+        erroresHtml.textContent = errores
+    
+
+        celdasArreglo.forEach(celda => {
+           if( !celda.classList.contains('conNumeroInicio') ) {
+                celda.textContent = '';
+                celda.classList.remove('numeroEquivocado')
+                celda.classList.remove('numeroBien')
+            }
+
+        })
+    }
+
+}
+
 setInterval(() => {
-    let tiempo = document.getElementById("timer")
     
     if (cronometrar) {
         acumulado += Date.now() - tiempoRef
@@ -575,35 +744,7 @@ function formatearMS(tiempo_ms) {
 
 }
 
-function resetJuego() {
 
-    var confirmar = confirm('¿Quieres resetear el juego? Se perdera el progreso que hayas hecho')
-    
-    if (confirmar) {
-        cronometrar = false
-        acumulado = 0
-        btnInicio.removeAttribute('hidden')
-        btnPausa.setAttribute('hidden', true)
-        tableroCss.style.opacity = '5%'
-        errores = 0
-        
-        // let celdasReset = celdasArreglo.filter(celda => celda.classList.contains('conNumeroInicio'))
-
-        // celdasReset.textContent = '';
-
-
-        celdasArreglo.forEach(celda => {
-           if( !celda.classList.contains('conNumeroInicio') ) {
-                celda.textContent = '';
-                celda.classList.remove('numeroEquivocado')
-                celda.classList.remove('numeroBien')
-            }
-
-        })
-    }
-
-
-}
 
 
 

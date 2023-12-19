@@ -23,9 +23,10 @@
             </div>
 
             <div class="btn-pausa-reset">
-                <img src="img/btn-pausa.svg" class="btn-pausa" hidden id="btn-pausa">
-                <img src="img/btn-play.svg" class="btn-play"  id="btn-play">
-                <img src="img/btn-reset.svg" class="btn-reset" id="btn-reset">
+
+                <img src="img/btn-pausa.svg" class="btn-pausa" id="btn-pausa" hidden>
+                <img src="img/btn-play.svg" class="btn-play"  id="btn-play" hidden>
+                <img src="img/btn-reset.svg" class="btn-reset" id="btn-reset" hidden>
 
             </div>
 
@@ -34,7 +35,14 @@
             </div>
             
         </div>
-
+        <div id="btn-jugar"> 
+            <button class="learn-more">
+                <span class="circle" aria-hidden="true" hidden>
+                <span class="icon arrow"></span>
+                </span>
+                <span class="button-text">JUGAR</span>
+            </button>
+        </div>
         <div class="main-sudoku-grid tablero" id="tablero">
 
             <!-- <div class="celda border-right border-bottom"></div>
