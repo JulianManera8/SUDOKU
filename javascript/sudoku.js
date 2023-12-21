@@ -687,9 +687,9 @@ function eventos() {
 
 
 
-        erroresCss.style.scale  = '150%';
+        erroresCss.style.scale  = '130%';
         erroresCss.style.transition = 'all 1s ease';
-        tiempo.style.scale  = '150%';
+        tiempo.style.scale  = '130%';
         tiempo.style.transition = 'all 1s ease';
         
 
@@ -788,7 +788,7 @@ function formatearMS(tiempo_ms) {
         return (this + "").padStart(n, 0)
     }
 
-    return H.ceros(2) + ":" + M.ceros(2) + ":" + S.ceros(2)
+    return  M.ceros(2) + ":" + S.ceros(2)
     
 }
 
