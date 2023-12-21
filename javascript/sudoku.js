@@ -37,49 +37,50 @@ var solucion1 = [
 ]
 
 var tablero2 = [
-    "--8623---",
-    "971---6--",
-    "--397-548",
-    "85-----97",
-    "19-85--6-",
-    "36----854",
-    "---362---",
-    "----85362",
-    "36----485"
+    "548-23---",
+    "76---458-",
+    "--2578---",
+    "--49-27-6",
+    "3758----9",
+    "---715348",
+    "2563---17",
+    "---4572-3",
+    "4--261--5"
 ];
+
 var solucion2 = [
     "548623971",
-    "971548623",
-    "623971548",
-    "854362197",
-    "197854362",
-    "362197854",
-    "485362197",
-    "197485362",
-    "362197485"
+    "763194582",
+    "192578634",
+    "814932756",
+    "375846129",
+    "629715348",
+    "256389417",
+    "981457263",
+    "437261895"
 ];
 
 var tablero3 = [
-    "78---1456",
-    "--67-----",
-    "3--45---9",
-    "978----45",
-    "---978--2",
-    "13--4-9--",
-    "8--231--4",
-    "----97---",
-    "2315----7"
+    "78932----",
+    "--164-792",
+    "64275----",
+    "96--1-57-",
+    "1---836--",
+    "324---18-",
+    "-7319----",
+    "---87--31",
+    "81-----47"
 ];
 var solucion3 = [
     "789321456",
-    "456789321",
-    "321456789",
-    "978132645",
-    "645978132",
-    "132645978",
-    "897231564",
-    "564897231",
-    "231564897"
+    "531648792",
+    "642759318",
+    "968412573",
+    "157983624",
+    "324567189",
+    "273194865",
+    "496875231",
+    "815236947"
 ];
 
 var tablero4 = [
@@ -112,7 +113,7 @@ var tablero5 = [
     "598-----2",
     "-12--876-",
     "76---25--",
-    "-----231",
+    "-----231-",
     "-31---476",
     "-----1859"
 ];
@@ -410,7 +411,6 @@ function poblarTablero() {
                     ponerNumero(celda);
                 }
                 
-
                 // si toco en algun lugar q no sea los numeros ni el tablero, me desSelecciona
                 window.addEventListener('click', (e) => {
                     if (!e.target.classList.contains('celda') && !e.target.classList.contains('numero')) {
@@ -422,16 +422,14 @@ function poblarTablero() {
             //aca llenamos el tablero con el arreglo del tablero que elijamos
             //ESTE EJEMPLO ES CON EL TABLERO1, SI QUIERO OTRO 
             //TENGO Q PONER TABLERO 2 en la condicion del IF y tmb abajo de eso
-            if (tablero1[r][c] != "-" ) {
-                celda.innerHTML = tablero1[r][c]
+            if (tablero3[r][c] != "-" ) {
+                celda.innerHTML = tablero3[r][c]
             }
             
             //QUE NO HAGA HOVER CON LAS CELDAS QUE ESTABAN DESDE UN PRINCIPIO
             if (celda.textContent != "") {
-                celda.classList.add("conNumeroInicio");
-                celda.addEventListener("mouseenter", function() {
-                    celda.style.backgroundColor = 'rgba(246, 226, 183, 0.245)'
-                });
+
+                celda.classList.add("conNumeroInicio", "bien");
                 
             }
             
@@ -453,11 +451,11 @@ function poblarTablero() {
     let celdas = document.querySelectorAll('.celda');
     celdasArreglo = [];
 
-    
     celdas.forEach(celda => {
         celdasArreglo.push(celda)
     })
 
+    //creamos un arreglo con todos los nummeros
     let numeros = document.querySelectorAll('.numero')
     numerosArreglo = [];
 
@@ -469,11 +467,13 @@ function poblarTablero() {
 
 function leerNumeroSelec() {
     numeroSelec = this.textContent;
+    
 
     celdasArreglo.forEach(celda => {
         if (celda.textContent === numeroSelec) {
 
             celda.style.backgroundColor = 'rgba(80, 162, 255, 0.500)'
+
             setTimeout(() => {
                 if (celda.classList.contains('conNumeroInicio')) {
                     celda.style.backgroundColor = 'rgba(246, 226, 183, 0.245)'
@@ -490,18 +490,8 @@ function leerNumeroSelec() {
 }
 
 function numeroCompletado(numero) {
-    celdasArreglo.forEach(celda => {
-        if (celda.textContent === numero) {
 
-            let contadorNumerosPuestos = parseInt(celda.length)
-            if (contadorNumerosPuestos === 9) {
-                console.log('aca se desactiva')
-            } else {
-                console.log('tdv no')
-            }
-            
-        }
-    })
+    
 }
 
 
@@ -519,11 +509,11 @@ function ponerNumero(celda) {
     if (numeroSelec != null && celda.textContent == '' || celda.classList.contains('numeroEquivocado')) {
 
         //comprobamos que el numero este bien segun la solucion
-        if (solucion1[r][c] == numeroSelec) {
+        if (solucion3[r][c] == numeroSelec) {
             //si el nuemro seleccionado coincide con el indice de la solucion, joya
             celda.textContent = numeroSelec
             celda.classList.remove('numeroEquivocado');
-            celda.classList.add('numeroBien');
+            celda.classList.add('numeroBien', "bien");
             celda.classList.remove('celdaActiva');
 
         } else if (numeroSelec == null) {
@@ -549,16 +539,24 @@ function ponerNumero(celda) {
         celdasArreglo.forEach(celda => {
             if (celda.textContent === numeroCelda) {
 
-
                 celda.style.backgroundColor = 'rgba(80, 162, 255, 0.500)'
+                
                 setTimeout(() => {
-                    celda.style.backgroundColor = 'rgba(246, 226, 183, 0.245)'
+
+                    if (celda.classList.contains('conNumeroInicio')) {
+                        celda.style.backgroundColor = 'rgba(246, 226, 183, 0.245)'
+                    } else {
+                        celda.style.backgroundColor = '#ffffff'
+                    }
+                    
                 }, 2500);
             }
         })
     } 
 
 }
+
+
 
 
 
@@ -577,8 +575,6 @@ const btnContenedor = document.querySelector('.btn-pausa-reset')
 const erroresCss = document.querySelector('.div-errores')
 const numerosContenedor = document.querySelector('.main-numeros-grid')
 let tiempo = document.getElementById("timer")
-
-    
 
 
 eventos();

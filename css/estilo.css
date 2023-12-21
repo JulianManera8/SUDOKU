@@ -245,12 +245,12 @@ button:hover .button-text {
     z-index: 1;
 }
 
-.celda:hover {
+/* .celda:hover {
     background-color: rgba(173, 216, 230, 0.189);
 }
 .celda:not(:hover) {
     transition: 0.1s;
-}
+} */
 
 
 /*----------------ESTILOS DESDE JS----------------*/
@@ -283,10 +283,10 @@ button:hover .button-text {
 }
 
 
-.duplicada {
-    background-color: rgba(80, 162, 255, 0.993);
-}
+.mismoNumero {
+    background-color: rgba(80, 162, 255, 0.388);
 
+}
 
 
 /*-------------GRILLA DE NUMEROS PARA COLOCAR-------------*/
