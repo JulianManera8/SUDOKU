@@ -391,6 +391,7 @@ function poblarTablero() {
                 if (!e.target.classList.contains('celda') && !e.target.classList.contains('numero')) {
                     numeros.classList.remove('numeroActivo');
                     numeroSelec = null
+                    limpiarNumIguales();
                 }
             })
         });
@@ -472,26 +473,31 @@ function poblarTablero() {
 function leerNumeroSelec() {
     numeroSelec = this.textContent;
     
+    limpiarNumIguales()
+    let numerosIguales = celdasArreglo.filter( celda => celda.textContent == numeroSelec)
 
-    celdasArreglo.forEach(celda => {
-        if (celda.textContent === numeroSelec) {
-
-            celda.style.backgroundColor = 'rgba(80, 162, 255, 0.500)'
-
-            setTimeout(() => {
-                if (celda.classList.contains('conNumeroInicio')) {
-                    celda.style.backgroundColor = 'rgba(246, 226, 183, 0.245)'
-                } else {
-                    celda.style.backgroundColor = '#ffffff'
-                }
-            }, 3500);
-        }
+    numerosIguales.forEach(numero => {
+        numero.style.backgroundColor = 'rgba(80, 162, 255, 0.500)'
     })
 
 
     return numeroSelec
 }
 
+function limpiarNumIguales() {
+    numerosIguales = [];
+
+    celdasArreglo.forEach(celda => {
+
+        if (celda.classList.contains('conNumeroInicio')) {
+            celda.style.backgroundColor = 'rgba(246, 226, 183, 0.245)'
+        } else {
+            celda.style.backgroundColor = '#ffffff'
+        }    
+
+    })
+    
+}
 
 
 
@@ -537,22 +543,12 @@ function ponerNumero(celda) {
     } else if (celda.textContent != '') {
 
         let numeroCelda = celda.textContent
-
-        celdasArreglo.forEach(celda => {
-            if (celda.textContent === numeroCelda) {
-
-                celda.style.backgroundColor = 'rgba(80, 162, 255, 0.500)'
                 
-                setTimeout(() => {
+        limpiarNumIguales()
+        let numerosIguales = celdasArreglo.filter( celda => celda.textContent == numeroCelda)
 
-                    if (celda.classList.contains('conNumeroInicio')) {
-                        celda.style.backgroundColor = 'rgba(246, 226, 183, 0.245)'
-                    } else {
-                        celda.style.backgroundColor = '#ffffff'
-                    }
-                    
-                }, 2500);
-            }
+        numerosIguales.forEach(numero => {
+            numero.style.backgroundColor = 'rgba(80, 162, 255, 0.500)'
         })
     } 
 
@@ -563,7 +559,6 @@ function ponerNumero(celda) {
 function sumarArrBien(celda) {
     if (celda.classList.contains('bien')) {
         numerosBien.push(celda.textContent);
-        console.log(numerosBien)
         
         const num1 = numerosBien.filter( num => num === '1' );
         let num1Completo = num1.length
@@ -650,9 +645,6 @@ function sumarArrBien(celda) {
 
     }
 }
-
-
-
 
 
 
@@ -775,10 +767,6 @@ function eventos() {
         btnReset.style.transition = 'all 1s ease'
         
 
-
-
-
-
         erroresCss.style.scale  = '130%';
         erroresCss.style.transition = 'all 1s ease';
         tiempo.style.scale  = '130%';
@@ -794,6 +782,7 @@ function eventos() {
 
 
 function resetJuego() {
+
 
     var confirmar = confirm('¿Quieres resetear el juego? Se perdera el progreso que hayas hecho')
     
@@ -854,7 +843,7 @@ function resetJuego() {
         })
 
         reestablecerNum();
-
+        limpiarNumIguales();
     }
 
 }
