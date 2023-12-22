@@ -11,6 +11,9 @@ var errores = 0;
 let esPicable = false;
 
 
+// ARREGLO PARA LOS NUMEROS QUE ESTEN BIEN PUESTOS
+let numerosBien = [];
+
 // DISTITNOS tableros de sudoku
 //ESTO PROXIMAMENTE PASA PARA LA BASE DE DATOS
 var tablero1 = [
@@ -422,14 +425,15 @@ function poblarTablero() {
             //aca llenamos el tablero con el arreglo del tablero que elijamos
             //ESTE EJEMPLO ES CON EL TABLERO1, SI QUIERO OTRO 
             //TENGO Q PONER TABLERO 2 en la condicion del IF y tmb abajo de eso
-            if (tablero3[r][c] != "-" ) {
-                celda.innerHTML = tablero3[r][c]
+            if (tablero1[r][c] != "-" ) {
+                celda.innerHTML = tablero1[r][c]
             }
             
             //QUE NO HAGA HOVER CON LAS CELDAS QUE ESTABAN DESDE UN PRINCIPIO
             if (celda.textContent != "") {
 
                 celda.classList.add("conNumeroInicio", "bien");
+                sumarArrBien(celda)
                 
             }
             
@@ -484,15 +488,11 @@ function leerNumeroSelec() {
         }
     })
 
-    numeroCompletado(numeroSelec)
 
     return numeroSelec
 }
 
-function numeroCompletado(numero) {
 
-    
-}
 
 
 function ponerNumero(celda) {
@@ -509,12 +509,14 @@ function ponerNumero(celda) {
     if (numeroSelec != null && celda.textContent == '' || celda.classList.contains('numeroEquivocado')) {
 
         //comprobamos que el numero este bien segun la solucion
-        if (solucion3[r][c] == numeroSelec) {
+        if (solucion1[r][c] == numeroSelec) {
             //si el nuemro seleccionado coincide con el indice de la solucion, joya
             celda.textContent = numeroSelec
             celda.classList.remove('numeroEquivocado');
             celda.classList.add('numeroBien', "bien");
             celda.classList.remove('celdaActiva');
+
+            sumarArrBien(celda);
 
         } else if (numeroSelec == null) {
             celda.textContent = '';
@@ -555,6 +557,100 @@ function ponerNumero(celda) {
     } 
 
 }
+
+
+
+function sumarArrBien(celda) {
+    if (celda.classList.contains('bien')) {
+        numerosBien.push(celda.textContent);
+        console.log(numerosBien)
+        
+        const num1 = numerosBien.filter( num => num === '1' );
+        let num1Completo = num1.length
+
+        if (num1Completo === 9) {
+            let numero1 = document.getElementById('1')
+            numero1.removeEventListener('click', leerNumeroSelec);
+            numero1.classList.add('numeroCompleto');
+        }
+
+        const num2 = numerosBien.filter( num => num === '2' );
+        let num2Completo = num2.length
+
+        if (num2Completo === 9) {
+            let numero2 = document.getElementById('2')
+            numero2.removeEventListener('click', leerNumeroSelec);
+            numero2.classList.add('numeroCompleto');
+        }
+
+        const num3 = numerosBien.filter( num => num === '3' );
+        let num3Completo = num3.length
+
+        if (num3Completo === 9) {
+            let numero3 = document.getElementById('3')
+            numero3.removeEventListener('click', leerNumeroSelec);
+            numero3.classList.add('numeroCompleto');
+        }
+
+        const num4 = numerosBien.filter( num => num === '4' );
+        let num4Completo = num4.length
+
+        if (num4Completo === 9) {
+            let numero4 = document.getElementById('4')
+            numero4.removeEventListener('click', leerNumeroSelec);
+            numero4.classList.add('numeroCompleto');
+        }
+
+        const num5 = numerosBien.filter( num => num === '5' );
+        let num5Completo = num5.length
+
+        if (num5Completo === 9) {
+            let numero5 = document.getElementById('5')
+            numero5.removeEventListener('click', leerNumeroSelec);
+            numero5.classList.add('numeroCompleto');
+        }
+
+        const num6 = numerosBien.filter( num => num === '6' );
+        let num6Completo = num6.length
+
+        if (num6Completo === 9) {
+            let numero6 = document.getElementById('6')
+            numero6.removeEventListener('click', leerNumeroSelec);
+            numero6.classList.add('numeroCompleto');
+        }
+
+        const num7 = numerosBien.filter( num => num === '7' );
+        let num7Completo = num7.length
+
+        if (num7Completo === 9) {
+            let numero7 = document.getElementById('7')
+            numero7.removeEventListener('click', leerNumeroSelec);
+            numero7.classList.add('numeroCompleto');
+        }
+
+        const num8 = numerosBien.filter( num => num === '8' );
+        let num8Completo = num8.length
+
+        if (num8Completo === 9) {
+            let numero8 = document.getElementById('8')
+            numero8.removeEventListener('click', leerNumeroSelec);
+            numero8.classList.add('numeroCompleto');
+        }
+
+        const num9 = numerosBien.filter( num => num === '9' );
+        let num9Completo = num9.length
+
+        if (num9Completo === 9) {
+            let numero9 = document.getElementById('9')
+            numero9.removeEventListener('click', leerNumeroSelec);
+            numero9.classList.add('numeroCompleto');
+        }
+
+
+
+    }
+}
+
 
 
 
@@ -752,10 +848,65 @@ function resetJuego() {
                 celda.textContent = '';
                 celda.classList.remove('numeroEquivocado')
                 celda.classList.remove('numeroBien')
+                
             }
 
         })
+
+        reestablecerNum();
+
     }
+
+}
+
+function reestablecerNum() {
+    
+    numerosBien = [];
+    celdasArreglo.forEach(celda => {
+        if( celda.classList.contains('conNumeroInicio' ,'numeroBien') ) {
+            sumarArrBien(celda);
+        }
+    })
+
+    let numero1 = document.getElementById('1')
+            numero1.addEventListener('click', leerNumeroSelec);
+            numero1.classList.remove('numeroCompleto');
+
+    let numero2 = document.getElementById('2')
+            numero2.addEventListener('click', leerNumeroSelec);
+            numero2.classList.remove('numeroCompleto');
+
+    let numero3 = document.getElementById('3')
+            numero3.addEventListener('click', leerNumeroSelec);
+            numero3.classList.remove('numeroCompleto');
+
+
+    let numero4 = document.getElementById('4')
+            numero4.addEventListener('click', leerNumeroSelec);
+            numero4.classList.remove('numeroCompleto');
+            
+    let numero5 = document.getElementById('5')
+            numero5.addEventListener('click', leerNumeroSelec);
+            numero5.classList.remove('numeroCompleto');
+            
+    let numero6 = document.getElementById('6')
+            numero6.addEventListener('click', leerNumeroSelec);
+            numero6.classList.remove('numeroCompleto');
+            
+    let numero7 = document.getElementById('7')
+            numero7.addEventListener('click', leerNumeroSelec);
+            numero7.classList.remove('numeroCompleto');
+            
+    let numero8 = document.getElementById('8')
+            numero8.addEventListener('click', leerNumeroSelec);
+            numero8.classList.remove('numeroCompleto');
+            
+    let numero9 = document.getElementById('9')
+            numero9.addEventListener('click', leerNumeroSelec);
+            numero9.classList.remove('numeroCompleto');
+
+
+
 
 }
 
@@ -787,6 +938,7 @@ function formatearMS(tiempo_ms) {
     return  M.ceros(2) + ":" + S.ceros(2)
     
 }
+
 
 
 

@@ -322,7 +322,19 @@ button:hover .button-text {
     background-color: rgba(231, 172, 83, 0.78);
 }
 
-
+.numeroCompleto {
+    opacity: 20%;
+    cursor: default;
+}
+.numeroCompleto:hover {
+    background-color: white !important;
+}
+.numeroCompleto:active {
+    background-color: white !important;
+}
+.numeroCompleto:not(:active) {
+    background-color: white !important;
+}
 
 
 
