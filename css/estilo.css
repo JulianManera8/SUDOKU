@@ -22,6 +22,8 @@ body {
     color: #001253;
     font-family: 'Kanit', sans-serif;
     font-size: 120%;
+    margin-bottom: -40px;
+
 }
 
 
@@ -224,6 +226,7 @@ button:hover .button-text {
     width: 80vw;
     max-width: 500px;
     opacity: 10%;
+    height: 45vh;
 }
 
 .celda {
@@ -286,6 +289,12 @@ button:hover .button-text {
 .mismoNumero {
     background-color: rgba(80, 162, 255, 0.388);
 
+}
+
+.win {
+    color: rgba(1, 171, 1, 0.688) !important;
+    background-color: rgb(243, 251, 229) !important;
+    transition: 2s;
 }
 
 

@@ -4,6 +4,10 @@
 var numeroSelec = null;
 var celdaSelec = null;
 
+//grilla de los numeros para seleccionar
+const gridNumeros = document.querySelector('#grillaNumeros')
+const gridSudoku = document.querySelector('#tablero')
+
 //iniciar contador de errores
 var errores = 0;
 
@@ -14,18 +18,30 @@ let esPicable = false;
 // ARREGLO PARA LOS NUMEROS QUE ESTEN BIEN PUESTOS
 let numerosBien = [];
 
-// DISTITNOS tableros de sudoku
+// DISTINTOS tableros de sudoku
 //ESTO PROXIMAMENTE PASA PARA LA BASE DE DATOS
 var tablero1 = [
-    "--74916-5",
-    "2---6-3-9",
-    "-----7-1-",
-    "-586----4",
-    "--3----9-",
-    "--62--187",
-    "9-4-7---2",
-    "67-83--41",
-    "81--45-6-"
+    // "--74916-5",
+    // "2---6-3-9",
+    // "-----7-1-",
+    // "-586----4",
+    // "--3----9-",
+    // "--62--187",
+    // "9-4-7---2",
+    // "67-83--41",
+    // "81--45-6-"
+
+    //PARA  DARLE LA FUNCIONALIDAD DE TERMINAR EL JUEGO
+
+    "387491625",
+    "241568379",
+    "569327418",
+    "758619234",
+    "123784596",
+    "496253187",
+    "934176852",
+    "675832941",
+    "81294576-"
 ] 
 var solucion1 = [
     "387491625",
@@ -364,17 +380,13 @@ var solucion15 = [
 
 //apenas cargue la pag, se llena el tablero
 window.onload = function () {
-    // if (cronometrar) {
-    // }
     poblarTablero();
-
 }
 
 function poblarTablero() {
-
-    //grilla de los numeros para seleccionar
-    const gridNumeros = document.querySelector('#grillaNumeros')
     
+    // GRID DE LOS NUMEROS
+
     for (i = 1; i <= 9; i++) {
 
         const numeros = document.createElement("div");
@@ -400,8 +412,8 @@ function poblarTablero() {
         gridNumeros.appendChild(numeros);
     };
 
-    //grilla de las celdas 9*9
-    const gridSudoku = document.querySelector('#tablero')
+
+    //  GRID DE LAS CELDAS
     for (r = 0; r <= 8; r++) {
         for (c = 0; c <= 8; c++) {
             //<div class="main-sudoku-cell celda border-right border-bottom"></div>
@@ -641,7 +653,35 @@ function sumarArrBien(celda) {
             numero9.classList.add('numeroCompleto');
         }
 
+        if (numerosBien.length == 81) {
 
+            cronometrar = false;
+
+            celdasArreglo.forEach( celda => {
+
+                setTimeout(() => {
+                    celda.classList.add('win');
+
+                    gridNumeros.style.opacity = '0';
+                    gridNumeros.style.transition = 'all 2s ease-in';
+
+                    errorBtnTimer.style.opacity = '0';
+                    errorBtnTimer.style.transition = 'all 2s ease-in';
+
+                }, 500);
+
+                // Y ACA CREO UN CARTEL EN EL MEDIO DEL SUDOKU
+                // CON EL SUDOKU DE FONDO, QUE APAREZCA FELICITACIONES!
+                // EL TIEMPO QUE HIZO, LOS ERRORES, Y SI QUIERE REINICIAR EL NIVEL
+                // O ELEGIR OTRO NIVEL
+                
+
+
+
+
+            })
+            
+        }
 
     }
 }
@@ -662,6 +702,7 @@ const tableroCss = document.querySelector('.main-sudoku-grid')
 const btnContenedor = document.querySelector('.btn-pausa-reset')
 const erroresCss = document.querySelector('.div-errores')
 const numerosContenedor = document.querySelector('.main-numeros-grid')
+const errorBtnTimer = document.getElementById('errBtnTim')
 let tiempo = document.getElementById("timer")
 
 
@@ -740,46 +781,43 @@ function eventos() {
 
     })
 
-    btnPausa.addEventListener('click', () => {
-        cronometrar = false
-
-        esPicable = false;
-
-        setTimeout(() => {
-            btnPausa.setAttribute('hidden', true)
-            btnInicio.removeAttribute('hidden')
-        }, 500);
-
-        tableroCss.style.opacity = '10%'
-        tableroCss.style.transition = 'all 0.5s ease';
-        numerosContenedor.style.opacity = '10%'
-        numerosContenedor.style.transition = 'all 0.5s ease';
-
-        btnContenedor.classList.remove('moverArriba')
-        btnContenedor.style.transition = 'all 1s ease'
-
-
-        btnInicio.style.opacity = '100%';
-        btnInicio.style.transition = 'all 0.5s ease'
-
-
-
-        btnReset.style.transition = 'all 1s ease'
-        
-
-        erroresCss.style.scale  = '130%';
-        erroresCss.style.transition = 'all 1s ease';
-        tiempo.style.scale  = '130%';
-        tiempo.style.transition = 'all 1s ease';
-        
-
-    })
+    btnPausa.addEventListener('click', pausarJuego)
 
     btnReset.addEventListener('click', resetJuego)
 
 
 }
 
+function pausarJuego() {
+    cronometrar = false
+    esPicable = false;
+
+    setTimeout(() => {
+        btnPausa.setAttribute('hidden', true)
+        btnInicio.removeAttribute('hidden')
+    }, 500);
+
+    tableroCss.style.opacity = '10%'
+    tableroCss.style.transition = 'all 0.5s ease';
+    
+    numerosContenedor.style.opacity = '10%'
+    numerosContenedor.style.transition = 'all 0.5s ease';
+    
+    btnContenedor.classList.remove('moverArriba')
+    btnContenedor.style.transition = 'all 1s ease'
+    
+    btnInicio.style.opacity = '100%';
+    btnInicio.style.transition = 'all 0.5s ease'
+    
+    btnReset.style.transition = 'all 1s ease'
+    
+    erroresCss.style.scale  = '130%';
+    erroresCss.style.transition = 'all 1s ease';
+    
+    tiempo.style.scale  = '130%';
+    tiempo.style.transition = 'all 1s ease';
+        
+}
 
 function resetJuego() {
 
