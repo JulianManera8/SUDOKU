@@ -21,27 +21,27 @@ let numerosBien = [];
 // DISTINTOS tableros de sudoku
 //ESTO PROXIMAMENTE PASA PARA LA BASE DE DATOS
 var tablero1 = [
-    "--74916-5",
-    "2---6-3-9",
-    "-----7-1-",
-    "-586----4",
-    "--3----9-",
-    "--62--187",
-    "9-4-7---2",
-    "67-83--41",
-    "81--45-6-"
+    // "--74916-5",
+    // "2---6-3-9",
+    // "-----7-1-",
+    // "-586----4",
+    // "--3----9-",
+    // "--62--187",
+    // "9-4-7---2",
+    // "67-83--41",
+    // "81--45-6-"
 
     //PARA  DARLE LA FUNCIONALIDAD DE TERMINAR EL JUEGO
 
-    // "387491625",
-    // "241568379",
-    // "569327418",
-    // "758619234",
-    // "123784596",
-    // "496253187",
-    // "934176852",
-    // "675832941",
-    // "81294576-"
+    "387491625",
+    "241568379",
+    "569327418",
+    "758619234",
+    "123784596",
+    "496253187",
+    "934176852",
+    "675832941",
+    "81294576-"
 ] 
 var solucion1 = [
     "387491625",
@@ -670,17 +670,56 @@ function sumarArrBien(celda) {
 
                 }, 500);
 
-                // Y ACA CREO UN CARTEL EN EL MEDIO DEL SUDOKU
-                // CON EL SUDOKU DE FONDO, QUE APAREZCA FELICITACIONES!
-                // EL TIEMPO QUE HIZO, LOS ERRORES, Y SI QUIERE REINICIAR EL NIVEL
-                // O ELEGIR OTRO NIVEL
-                
-
-
-
+                setTimeout(() => {
+                    celda.style.opacity = '30%';
+                    celda.style.transition = 'all 2s ease-in';
+                }, 2000);
 
             })
-            
+
+            // Y ACA CREO UN CARTEL EN EL MEDIO DEL SUDOKU
+            // CON EL SUDOKU DE FONDO, QUE APAREZCA FELICITACIONES!
+            // EL TIEMPO QUE HIZO, LOS ERRORES, Y SI QUIERE REINICIAR EL NIVEL
+            // O ELEGIR OTRO NIVEL
+
+            setTimeout(() => {
+                
+
+                const mensajeFin = document.querySelector('.mensajeFin');
+
+                const fin = document.createElement('div');
+                fin.classList.add('fin');
+                fin.innerHTML = `
+                
+                    <h3 class="finTitulo"> ¡FELICITACIONES! </h3> <br> 
+
+                    <div class="datos"> 
+                        <p class="finTiempo"> TIEMPO <b>${timer.textContent}<b/> </p>
+                        <p class="finErrores"> ERRORES <b><b class="cero">${errores}</b>/3 </b> </p>
+                    </div>
+                    
+                    <div class="botones"> 
+                        <div class="home">
+                            <img src="../img/home.svg" alt="Inicio">
+                        </div>
+                        <div class="reiniciar">
+                            <img src="../img/btn-reset.svg" alt="Reset">
+                        </div>
+                        <div class="sigNivel"> 
+                            <img src="../img/sigNivel.svg" alt="Siguiente">
+                        </div>
+                    </div>
+                    
+                    
+                    `;
+
+                setTimeout(() => {
+                    fin.style.scale = '100%'
+                    fin.style.transition = 'all 0.5s ease-out'
+                }, 500);
+
+                mensajeFin.appendChild(fin);
+            }, 3000);
         }
 
     }
