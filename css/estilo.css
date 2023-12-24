@@ -311,7 +311,13 @@ button:hover .button-text {
     transition: 2s;
 }
 
-.mensajeFin {
+.bigL {
+    color: rgba(171, 1, 1, 0.688) !important;
+    background-color: rgb(253, 189, 189) !important;
+    transition: 2s;
+}
+
+.mensajeFin, .mensajePerder {
     position: absolute;
     top: 51%;
     left: 50%;
@@ -333,8 +339,6 @@ button:hover .button-text {
     border-radius: 2rem;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.813) inset;
     scale: 0%;
-
-    
 }
 
 .finTitulo {
@@ -342,6 +346,13 @@ button:hover .button-text {
     font-family: 'Kanit', sans-serif;
     color: rgb(4, 180, 4);
 }
+
+.finTituloPerder {
+    margin-bottom: -40px;
+    font-family: 'Kanit', sans-serif;
+    color: rgb(180, 4, 4);
+}
+
 
 .datos {
     display: flex;
@@ -380,6 +391,7 @@ button:hover .button-text {
     display: flex;
     text-align: center;
     align-items: center;
+    
    
 }
 
@@ -387,12 +399,14 @@ button:hover .button-text {
     border: 3px solid black;
     border-radius: 50%;
     padding: 5px;
+    cursor: pointer;
 }
 
 .reiniciar  {
     border: 3px solid black;
     border-radius: 50%;
     padding: 5px;
+    cursor: pointer;
 }
 
 .sigNivel  {
@@ -400,6 +414,23 @@ button:hover .button-text {
     border-radius: 50%;
     padding: 5px 8px 5px 0px;
     transform: rotate(180deg);
+    cursor: pointer;
+}
+
+.divPerder {
+    background-image: url('../img/fondoBlanco.png'); 
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    align-items: center;
+    border: 3px  solid white; 
+    width: 350px;
+    height: 290px;
+    flex-direction: column;
+    border-radius: 2rem;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.813) inset;
+    scale: 0%;
+
 }
 
 

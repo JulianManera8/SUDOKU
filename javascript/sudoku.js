@@ -8,6 +8,9 @@ var celdaSelec = null;
 const gridNumeros = document.querySelector('#grillaNumeros')
 const gridSudoku = document.querySelector('#tablero')
 
+//div para meter el mensaje de cuando gano
+const mensajeFin = document.querySelector('.mensajeFin');
+
 //iniciar contador de errores
 var errores = 0;
 
@@ -21,27 +24,27 @@ let numerosBien = [];
 // DISTINTOS tableros de sudoku
 //ESTO PROXIMAMENTE PASA PARA LA BASE DE DATOS
 var tablero1 = [
-    // "--74916-5",
-    // "2---6-3-9",
-    // "-----7-1-",
-    // "-586----4",
-    // "--3----9-",
-    // "--62--187",
-    // "9-4-7---2",
-    // "67-83--41",
-    // "81--45-6-"
+    "--74916-5",
+    "2---6-3-9",
+    "-----7-1-",
+    "-586----4",
+    "--3----9-",
+    "--62--187",
+    "9-4-7---2",
+    "67-83--41",
+    "81--45-6-"
 
     //PARA  DARLE LA FUNCIONALIDAD DE TERMINAR EL JUEGO
 
-    "387491625",
-    "241568379",
-    "569327418",
-    "758619234",
-    "123784596",
-    "496253187",
-    "934176852",
-    "675832941",
-    "81294576-"
+    // "387491625",
+    // "241568379",
+    // "569327418",
+    // "758619234",
+    // "123784596",
+    // "496253187",
+    // "934176852",
+    // "675832941",
+    // "81294576-"
 ] 
 var solucion1 = [
     "387491625",
@@ -545,6 +548,8 @@ function ponerNumero(celda) {
             errores++;
             const divErrores = document.getElementById('errores').innerHTML = errores
             
+            perderJuego(errores);
+
             ///ponemos el numero pero le damos la categoria de que esta mal
             celda.textContent = numeroSelec;
             celda.classList.add('numeroEquivocado')
@@ -566,7 +571,76 @@ function ponerNumero(celda) {
 
 }
 
+function perderJuego(errores) {
+    if (errores === 3) {
 
+        cronometrar = false;
+
+            celdasArreglo.forEach( celda => {
+
+                esPicable = false;
+
+                setTimeout(() => {
+                    celda.classList.add('bigL');
+
+                    gridNumeros.style.opacity = '0';
+                    gridNumeros.style.transition = 'all 2s ease-in';
+
+                    errorBtnTimer.style.opacity = '0';
+                    errorBtnTimer.style.transition = 'all 2s ease-in';
+
+                }, 500);
+
+                setTimeout(() => {
+                    celda.style.opacity = '30%';
+                    celda.style.transition = 'all 2s ease-in';
+                }, 2000);
+
+            })
+
+            // Y ACA CREO UN CARTEL EN EL MEDIO DEL SUDOKU
+            // CON EL SUDOKU DE FONDO, QUE APAREZCA FELICITACIONES!
+            // EL TIEMPO QUE HIZO, LOS ERRORES, Y SI QUIERE REINICIAR EL NIVEL
+            // O ELEGIR OTRO NIVEL
+
+            setTimeout(() => {
+
+                const perdio = document.createElement('div');
+                perdio.classList.add('divPerder');
+                perdio.innerHTML = `
+                
+                    <h3 class="finTituloPerder"> PERDISTE 😔 </h3> <br> 
+
+                    <div class="datos"> 
+                        <p class="finTiempo"> TIEMPO <b>${timer.textContent}<b/> </p>
+                        <p class="finErrores"> ERRORES <b><b class="cero">${errores}</b>/3 </b> </p>
+                    </div>
+                    
+                    <div class="botones"> 
+                        <div class="home" id="finHome">
+                            <img src="../img/home.svg" alt="Inicio">
+                        </div>
+                        <div class="reiniciar" onclick="resetDesdeFinPerdio()">
+                            <img src="../img/btn-reset.svg" alt="Reset">
+                        </div>
+                    </div>
+                    
+                    
+                    `;
+
+
+                setTimeout(() => {
+                    perdio.style.scale = '100%'
+                    perdio.style.transition = 'all 0.5s ease-out'
+                }, 500);
+
+                mensajeFin.appendChild(perdio);
+                
+
+
+            }, 3000);
+    }
+}
 
 function sumarArrBien(celda) {
     if (celda.classList.contains('bien')) {
@@ -683,9 +757,6 @@ function sumarArrBien(celda) {
             // O ELEGIR OTRO NIVEL
 
             setTimeout(() => {
-                
-
-                const mensajeFin = document.querySelector('.mensajeFin');
 
                 const fin = document.createElement('div');
                 fin.classList.add('fin');
@@ -699,13 +770,13 @@ function sumarArrBien(celda) {
                     </div>
                     
                     <div class="botones"> 
-                        <div class="home">
+                        <div class="home" id="finHome">
                             <img src="../img/home.svg" alt="Inicio">
                         </div>
-                        <div class="reiniciar">
+                        <div class="reiniciar" onclick="resetDesdeFinGano()">
                             <img src="../img/btn-reset.svg" alt="Reset">
                         </div>
-                        <div class="sigNivel"> 
+                        <div class="sigNivel" id="finSigNivel"> 
                             <img src="../img/sigNivel.svg" alt="Siguiente">
                         </div>
                     </div>
@@ -713,18 +784,22 @@ function sumarArrBien(celda) {
                     
                     `;
 
+
                 setTimeout(() => {
                     fin.style.scale = '100%'
                     fin.style.transition = 'all 0.5s ease-out'
                 }, 500);
 
                 mensajeFin.appendChild(fin);
+                
+
             }, 3000);
+
+            
         }
 
     }
 }
-
 
 
 // FUNCIONALIDAD DEL TIMER
@@ -736,6 +811,8 @@ let acumulado = 0
 const btnInicio = document.getElementById('btn-play')
 const btnPausa = document.getElementById('btn-pausa')
 const btnReset = document.getElementById('btn-reset')
+
+
 const btnJugar = document.getElementById('btn-jugar')
 const tableroCss = document.querySelector('.main-sudoku-grid')
 const btnContenedor = document.querySelector('.btn-pausa-reset')
@@ -785,6 +862,22 @@ function eventos() {
 
         }, 700);
 
+        celdasArreglo.forEach( celda => {
+
+            setTimeout(() => {
+                celda.classList.remove('win');
+    
+                gridNumeros.style.opacity = '100%';
+                gridNumeros.style.transition = 'all 2s ease-in';
+
+            }, 500);
+    
+            setTimeout(() => {
+                celda.style.opacity = '100%';
+                celda.style.transition = 'all 0.5s ease-in';
+            }, 500);
+    
+        })
 
     })
 
@@ -824,7 +917,6 @@ function eventos() {
 
     btnReset.addEventListener('click', resetJuego)
 
-
 }
 
 function pausarJuego() {
@@ -859,7 +951,6 @@ function pausarJuego() {
 }
 
 function resetJuego() {
-
 
     var confirmar = confirm('¿Quieres resetear el juego? Se perdera el progreso que hayas hecho')
     
@@ -925,6 +1016,164 @@ function resetJuego() {
 
 }
 
+function resetDesdeFinGano() {
+    cronometrar = false
+    acumulado = 0
+    esPicable = false;
+
+    mensajeFin.removeChild(mensajeFin.children[0])
+    // console.log(mensajeFin.children[0]) //
+    
+
+    btnReset.style.opacity = '0'
+    btnPausa.style.opacity = '0'
+    btnInicio.style.opacity = '0'
+    
+    btnReset.style.transition = 'all 0.8s ease'
+    btnPausa.style.transition = 'all 0.8s ease'
+    btnInicio.style.transition = 'all 0.8s ease'
+
+    setTimeout(() => {
+        btnJugar.style.opacity = '100%'
+        btnJugar.style.transition = 'all 0.5s ease'
+
+        btnReset.setAttribute('hidden', true)
+        btnPausa.setAttribute('hidden', true)
+
+        btnContenedor.classList.remove('moverArriba')
+
+        setTimeout(() => {
+            
+            btnJugar.removeAttribute('hidden')
+            btnInicio.setAttribute('hidden', true)
+            
+        }, 900);
+
+    }, 1200);
+
+    tableroCss.style.opacity = '10%'
+    numerosContenedor.style.opacity = '10%'
+    erroresCss.style.scale  = '100%';
+    erroresCss.style.transition = 'all 1s ease'
+    tiempo.style.scale  = '100%';
+    tiempo.style.transition = 'all 1s ease'
+
+    let erroresHtml = document.querySelector('#errores')
+    errores = errores*0
+    erroresHtml.textContent = errores
+
+    celdasArreglo.forEach(celda => {
+       if( !celda.classList.contains('conNumeroInicio') ) {
+            celda.textContent = '';
+            celda.classList.remove('numeroEquivocado')
+            celda.classList.remove('numeroBien')
+            
+        }
+    })
+
+    celdasArreglo.forEach( celda => {
+
+        setTimeout(() => {
+            celda.classList.remove('win');
+
+            gridNumeros.style.opacity = '20%';
+            gridNumeros.style.transition = 'all 2s ease-in';
+
+            errorBtnTimer.style.opacity = '100%';
+            errorBtnTimer.style.transition = 'all 2s ease-in';
+
+        }, 500);
+
+        setTimeout(() => {
+            celda.style.opacity = '30%';
+            celda.style.transition = 'all 2s ease-in';
+        }, 2000);
+
+    })
+
+    reestablecerNum();
+    limpiarNumIguales();
+}
+
+function resetDesdeFinPerdio() {
+    cronometrar = false
+    acumulado = 0
+    esPicable = false;
+
+    mensajeFin.removeChild(mensajeFin.children[0])
+    // console.log(mensajeFin.children[0]) //
+    
+
+    btnReset.style.opacity = '0'
+    btnPausa.style.opacity = '0'
+    btnInicio.style.opacity = '0'
+    
+    btnReset.style.transition = 'all 0.8s ease'
+    btnPausa.style.transition = 'all 0.8s ease'
+    btnInicio.style.transition = 'all 0.8s ease'
+
+    setTimeout(() => {
+        btnJugar.style.opacity = '100%'
+        btnJugar.style.transition = 'all 0.5s ease'
+
+        btnReset.setAttribute('hidden', true)
+        btnPausa.setAttribute('hidden', true)
+
+        btnContenedor.classList.remove('moverArriba')
+
+        setTimeout(() => {
+            
+            btnJugar.removeAttribute('hidden')
+            btnInicio.setAttribute('hidden', true)
+            
+        }, 900);
+
+    }, 1200);
+
+    tableroCss.style.opacity = '10%'
+    numerosContenedor.style.opacity = '10%'
+    erroresCss.style.scale  = '100%';
+    erroresCss.style.transition = 'all 1s ease'
+    tiempo.style.scale  = '100%';
+    tiempo.style.transition = 'all 1s ease'
+
+    let erroresHtml = document.querySelector('#errores')
+    errores = errores*0
+    erroresHtml.textContent = errores
+
+    celdasArreglo.forEach(celda => {
+       if( !celda.classList.contains('conNumeroInicio') ) {
+            celda.textContent = '';
+            celda.classList.remove('numeroEquivocado')
+            celda.classList.remove('numeroBien')
+            
+        }
+    })
+
+    celdasArreglo.forEach( celda => {
+
+        setTimeout(() => {
+            celda.classList.remove('bigL');
+
+            gridNumeros.style.opacity = '20%';
+            gridNumeros.style.transition = 'all 2s ease-in';
+
+            errorBtnTimer.style.opacity = '100%';
+            errorBtnTimer.style.transition = 'all 2s ease-in';
+
+        }, 500);
+
+        setTimeout(() => {
+            celda.style.opacity = '30%';
+            celda.style.transition = 'all 2s ease-in';
+        }, 2000);
+
+    })
+
+    reestablecerNum();
+    limpiarNumIguales();
+}
+
 function reestablecerNum() {
     
     numerosBien = [];
@@ -973,6 +1222,10 @@ function reestablecerNum() {
 
 
 
+
+}
+
+function resetPerder() {
 
 }
 
