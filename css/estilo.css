@@ -220,14 +220,17 @@ button:hover .button-text {
 
 .main-game {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-evenly;
     text-align: center;
     margin: auto;
+    margin-top: -20px;
 }
 
 .paraCentrar {
     display: flex;
     justify-content: center;
+    
 }
 
 
@@ -238,12 +241,12 @@ button:hover .button-text {
     justify-content: center;
     text-align: center;
     width: 80vw;
-    max-width: 500px;
+    max-width: 450px;
     opacity: 10%;
     height: 45vh;
     margin-bottom: 55px;
     @media (width > 500px) {
-        margin-bottom: 70px;
+        margin-bottom: 90px;
     }
 }
 
@@ -326,8 +329,8 @@ button:hover .button-text {
     
 }
 
-.fin {
-    background-image: url('../img/fondoBlanco.png'); 
+.divPerder {
+    background-image: url('../img/fondoBlanco.png');
     display: flex;
     justify-content: space-evenly;
     text-align: center;
@@ -337,7 +340,22 @@ button:hover .button-text {
     height: 290px;
     flex-direction: column;
     border-radius: 2rem;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.813) inset;
+    box-shadow: 0px 0px 30px rgba(255, 4, 4, 0.63) inset;
+    scale: 0%;
+}
+
+.fin {
+    background-image: url('../img/fondoBlanco.png');
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    align-items: center;
+    border: 3px  solid white; 
+    width: 350px;
+    height: 290px;
+    flex-direction: column;
+    border-radius: 2rem;
+    box-shadow: 0px 0px 30px rgba(50, 183, 2, 0.838) inset;
     scale: 0%;
 }
 
@@ -382,7 +400,7 @@ button:hover .button-text {
     justify-content: space-between;
     gap: 25px;
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
 }
 
 .botones img {
@@ -417,7 +435,7 @@ button:hover .button-text {
     cursor: pointer;
 }
 
-.divPerder {
+/* .divPerder {
     background-image: url('../img/fondoBlanco.png'); 
     display: flex;
     justify-content: space-evenly;
@@ -431,7 +449,7 @@ button:hover .button-text {
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.813) inset;
     scale: 0%;
 
-}
+} */
 
 
 
@@ -441,6 +459,7 @@ button:hover .button-text {
     justify-content: center;
     gap: 10px;
     opacity: 10%;
+    margin-bottom: 80px;
 }
 
 .main-numeros-cell {
@@ -489,6 +508,10 @@ button:hover .button-text {
 
     .titulo {
         margin-bottom: -10%;
+    }
+
+    .main-game {
+        margin-top: 5px !important;
     }
 
     .main-sudoku-grid {
