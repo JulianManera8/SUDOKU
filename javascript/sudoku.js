@@ -1259,7 +1259,14 @@ function formatearMS(tiempo_ms) {
 }
 
 
+// FUNCIONALIDAD DE DARK MODE
 
+const darkMode = document.getElementById("theme")
+
+darkMode.onclick = function () {
+    //fondo general
+    document.body.classList.toggle("darkMode")
+}
 
 
 
