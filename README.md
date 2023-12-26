@@ -2,6 +2,10 @@
 
 ------------TODOLIST------------
 
+    - arreglar el bug de que no me seleccione los nuevos numeros que voy poniendo entre los que son numeros iguales
+
+    - terminar con lo de modo oscuro
+
     - hacer un tutorial de como se juega si es la primera vez que uno juega, un video asi nomas abajo, que para acceder te tire un mensaje por el costado de: ver tutorial rapido de como se juega.
 
     - asignarle de poder hacerlo en modo nocturno
