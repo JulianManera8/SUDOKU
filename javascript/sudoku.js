@@ -36,15 +36,15 @@ var tablero1 = [
 
     //PARA  DARLE LA FUNCIONALIDAD DE TERMINAR EL JUEGO
 
-    // "387491625",
-    // "241568379",
-    // "569327418",
-    // "758619234",
-    // "123784596",
-    // "496253187",
-    // "934176852",
-    // "675832941",
-    // "81294576-"
+    //"387491625",
+    //"241568379",
+    //"569327418",
+    //"758619234",
+    //"123784596",
+    //"496253187",
+    //"934176852",
+    //"675832941",
+    //"81294----"
 ] 
 var solucion1 = [
     "387491625",
@@ -492,7 +492,7 @@ function leerNumeroSelec() {
     let numerosIguales = celdasArreglo.filter( celda => celda.textContent == numeroSelec)
 
     numerosIguales.forEach(numero => {
-        numero.style.backgroundColor = 'rgba(80, 162, 255, 0.500)'
+        numero.style.backgroundColor = 'var(--color-mismoNumero)'
     })
 
 
@@ -507,7 +507,7 @@ function limpiarNumIguales() {
         if (celda.classList.contains('conNumeroInicio')) {
             celda.style.backgroundColor = 'rgba(246, 226, 183, 0.245)'
         } else {
-            celda.style.backgroundColor = '#ffffff'
+            celda.style.backgroundColor = 'var(--color-fondoCeldas)'
         }    
 
     })
@@ -535,9 +535,13 @@ function ponerNumero(celda) {
             celda.textContent = numeroSelec
             celda.classList.remove('numeroEquivocado');
             celda.classList.add('numeroBien', "bien");
+            // setTimeout(() => {
+            //     celda.style.color = "green"
+            // }, 1500);
             celda.classList.remove('celdaActiva');
 
             sumarArrBien(celda);
+            marcarNumerosIguales(celda);
 
         } else if (numeroSelec == null) {
             celda.textContent = '';
@@ -559,16 +563,21 @@ function ponerNumero(celda) {
 
     } else if (celda.textContent != '') {
 
-        let numeroCelda = celda.textContent
-                
-        limpiarNumIguales()
-        let numerosIguales = celdasArreglo.filter( celda => celda.textContent == numeroCelda)
-
-        numerosIguales.forEach(numero => {
-            numero.style.backgroundColor = 'rgba(80, 162, 255, 0.500)'
-        })
+        marcarNumerosIguales(celda);
     } 
 
+}
+
+function marcarNumerosIguales(celda) {
+    let numeroCelda = celda.textContent
+                
+    limpiarNumIguales()
+
+    let numerosIguales = celdasArreglo.filter( celda => celda.textContent == numeroCelda)
+
+    numerosIguales.forEach(numero => {
+        numero.style.backgroundColor = 'var(--color-mismoNumero)'
+    })
 }
 
 function perderJuego(errores) {
@@ -584,16 +593,16 @@ function perderJuego(errores) {
                     celda.classList.add('bigL');
 
                     gridNumeros.style.opacity = '0';
-                    gridNumeros.style.transition = 'all 2s ease-in';
+                    gridNumeros.style.transition = 'all 1s ease-in';
 
                     errorBtnTimer.style.opacity = '0';
-                    errorBtnTimer.style.transition = 'all 2s ease-in';
+                    errorBtnTimer.style.transition = 'all 1s ease-in';
 
                 }, 500);
 
                 setTimeout(() => {
                     celda.style.opacity = '30%';
-                    celda.style.transition = 'all 2s ease-in';
+                    celda.style.transition = 'all 1s ease-in';
                 }, 2000);
 
             })
@@ -638,7 +647,7 @@ function perderJuego(errores) {
                 
 
 
-            }, 3000);
+            }, 2000);
     }
 }
 
@@ -737,16 +746,16 @@ function sumarArrBien(celda) {
                     celda.classList.add('win');
 
                     gridNumeros.style.opacity = '0';
-                    gridNumeros.style.transition = 'all 2s ease-in';
+                    gridNumeros.style.transition = 'all 1s ease-in';
 
                     errorBtnTimer.style.opacity = '0';
-                    errorBtnTimer.style.transition = 'all 2s ease-in';
+                    errorBtnTimer.style.transition = 'all 1s ease-in';
 
                 }, 500);
 
                 setTimeout(() => {
                     celda.style.opacity = '30%';
-                    celda.style.transition = 'all 2s ease-in';
+                    celda.style.transition = 'all 1s ease-in';
                 }, 2000);
 
             })
@@ -793,7 +802,7 @@ function sumarArrBien(celda) {
                 mensajeFin.appendChild(fin);
                 
 
-            }, 3000);
+            }, 2000);
 
             
         }
@@ -846,7 +855,7 @@ function eventos() {
                 btnPausa.style.transition = 'all 0.5s ease';
     
                 
-            }, 1500);
+            }, 1000);
 
             setTimeout(() => {
                 btnPausa.removeAttribute('hidden')
@@ -868,7 +877,7 @@ function eventos() {
                 celda.classList.remove('win');
     
                 gridNumeros.style.opacity = '100%';
-                gridNumeros.style.transition = 'all 2s ease-in';
+                gridNumeros.style.transition = 'all 1s ease-in';
 
             }, 500);
     
@@ -982,9 +991,9 @@ function resetJuego() {
                 btnInicio.setAttribute('hidden', true)
                 
 
-            }, 900);
+            }, 500);
 
-        }, 1200);
+        }, 500);
 
         tableroCss.style.opacity = '10%'
         numerosContenedor.style.opacity = '10%'
@@ -1047,9 +1056,9 @@ function resetDesdeFinGano() {
             btnJugar.removeAttribute('hidden')
             btnInicio.setAttribute('hidden', true)
             
-        }, 900);
+        }, 500);
 
-    }, 1200);
+    }, 500);
 
     tableroCss.style.opacity = '10%'
     numerosContenedor.style.opacity = '10%'
@@ -1087,7 +1096,7 @@ function resetDesdeFinGano() {
         setTimeout(() => {
             celda.style.opacity = '30%';
             celda.style.transition = 'all 2s ease-in';
-        }, 2000);
+        }, 1000);
 
     })
 
@@ -1128,7 +1137,7 @@ function resetDesdeFinPerdio() {
             
         }, 900);
 
-    }, 1200);
+    }, 900);
 
     tableroCss.style.opacity = '10%'
     numerosContenedor.style.opacity = '10%'
@@ -1166,7 +1175,7 @@ function resetDesdeFinPerdio() {
         setTimeout(() => {
             celda.style.opacity = '30%';
             celda.style.transition = 'all 2s ease-in';
-        }, 2000);
+        }, 1000);
 
     })
 
@@ -1264,9 +1273,9 @@ function formatearMS(tiempo_ms) {
 const darkMode = document.getElementById("theme")
 
 darkMode.onclick = function () {
-    //fondo general
     document.body.classList.toggle("darkMode")
 }
+
 
 
 
