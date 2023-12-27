@@ -108,72 +108,72 @@ var solucion3 = [
 ];
 
 var tablero4 = [
-    "598741---",
-    "23---74--",
-    "7--236---",
-    "859-----3",
-    "-2385----",
-    "--46---59",
-    "985------",
-    "3-298---7",
-    "4-------5"
+    "59874----",
+    "37-----84",
+    "--4-3--19",
+    "86----3--",
+    "1---976--",
+    "-----5198",
+    "45---29--",
+    "2-69-----",
+    "----76--5"
 ];
 var solucion4 = [
     "598741236",
-    "236598741",
-    "741236598",
-    "859174623",
-    "623859174",
-    "174623859",
-    "985417362",
-    "362985417",
-    "417362985"
+    "371629584",
+    "624538719",
+    "869214357",
+    "135897642",
+    "742365198",
+    "457182963",
+    "286953471",
+    "913476825"
 ];
 
 var tablero5 = [
     "98564----",
-    "123--5--7",
-    "64712----",
-    "598-----2",
-    "-12--876-",
-    "76---25--",
-    "-----231-",
-    "-31---476",
-    "-----1859"
+    "-----8954",
+    "--49---78",
+    "5---7---6",
+    "---5863--",
+    "64-----85",
+    "----51832",
+    "-53-----7",
+    "--24--519"
 ];
 var solucion5 = [
     "985647123",
-    "123985647",
-    "647123985",
-    "598764312",
-    "312598764",
-    "764312598",
-    "859476231",
-    "231859476",
-    "476231859"
+    "267318954",
+    "314925678",
+    "538174296",
+    "729586341",
+    "641239785",
+    "496751832",
+    "153892467",
+    "872463519"
 ];
 
 var tablero6 = [
-    "7--986---",
-    "3------86",
-    "--63217--",
-    "5---98--2",
-    "1-257----",
-    "6-----574",
-    "4578-----",
-    "21---78--",
-    "8---13---"
+    "--598----",
+    "29----7--",
+    "--87---64",
+    "----682--",
+    "---549---",
+    "9----764-",
+    "--9653---",
+    "3----28--",
+    "---891---"
 ];
 var solucion6 = [
     "745986321",
-    "321745986",
-    "986321745",
-    "574698132",
-    "132574698",
-    "698132574",
-    "457869213",
-    "213457869",
-    "869213457"
+    "296134758",
+    "138725964",
+    "514368279",
+    "627549183",
+    "983217645",
+    "879653412",
+    "351472896",
+    "462891537"
 ];
 
 var tablero7 = [
@@ -448,8 +448,8 @@ function poblarTablero() {
             //aca llenamos el tablero con el arreglo del tablero que elijamos
             //ESTE EJEMPLO ES CON EL TABLERO1, SI QUIERO OTRO 
             //TENGO Q PONER TABLERO 2 en la condicion del IF y tmb abajo de eso
-            if (tablero1[r][c] != "-" ) {
-                celda.innerHTML = tablero1[r][c]
+            if (tablero6[r][c] != "-" ) {
+                celda.innerHTML = tablero6[r][c]
             }
             
             //QUE NO HAGA HOVER CON LAS CELDAS QUE ESTABAN DESDE UN PRINCIPIO
@@ -542,7 +542,7 @@ function ponerNumero(celda) {
     if (numeroSelec != null && celda.textContent == '' || celda.classList.contains('numeroEquivocado')) {
 
         //comprobamos que el numero este bien segun la solucion
-        if (solucion1[r][c] == numeroSelec) {
+        if (solucion6[r][c] == numeroSelec) {
             //si el nuemro seleccionado coincide con el indice de la solucion, joya
             celda.textContent = numeroSelec
             celda.classList.remove('numeroEquivocado');
