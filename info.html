@@ -13,14 +13,11 @@
 
     <header class="titulo">
 
-        <div class="paste-button">
-            <button class="button">INFO &nbsp; ▼</button>
-            <div class="dropdown-content">
-              <a id="top" href="#">REGLAS SUDOKU CLASICO</a>
-              <a id="middle" href="#">TUTORIAL</a>
-              <a id="bottom" href="#">INFO SOBRE EL SUDOKU</a>
-            </div>
-        </div>
+        <button class="btn-volver" onclick="window.location.href='index.html'">
+            <svg height="16" width="16" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1024 1024"><path d="M874.690416 495.52477c0 11.2973-9.168824 20.466124-20.466124 20.466124l-604.773963 0 188.083679 188.083679c7.992021 7.992021 7.992021 20.947078 0 28.939099-4.001127 3.990894-9.240455 5.996574-14.46955 5.996574-5.239328 0-10.478655-1.995447-14.479783-5.996574l-223.00912-223.00912c-3.837398-3.837398-5.996574-9.046027-5.996574-14.46955 0-5.433756 2.159176-10.632151 5.996574-14.46955l223.019353-223.029586c7.992021-7.992021 20.957311-7.992021 28.949332 0 7.992021 8.002254 7.992021 20.957311 0 28.949332l-188.073446 188.073446 604.753497 0C865.521592 475.058646 874.690416 484.217237 874.690416 495.52477z"></path></svg>
+            <span>VOLVER</span>
+        </button>
+
 
         <h1> SODUKI </h1>
     
@@ -33,57 +30,57 @@
         
     </header>
 
-    <section class="reglas-container">
-        <h3 class="reglas-titulo">
-            REGLAS SUDOKU CLASICO
-        </h3>
-        <ul class="reglas">
-            <li class="regla"> Números del 1 al 9: El tablero debe llenarse con números del 1 al 9. </li>
-            <li class="regla"> Filas: Cada fila debe contener todos los números del 1 al 9 sin repetir.</li>
-            <li class="regla"> Columnas: Cada columna debe contener todos los números del 1 al 9 sin repetir.</li>
-            <li class="regla"> Cuadrantes (o bloques de 3x3): Cada uno de los 9 bloques de 3x3 debe contener todos los números del 1 al 9 sin repetir.</li>
-            <li class="regla"> Solución Única: Cada Sudoku tiene una solución única. Esto significa que, aunque pueda haber varias maneras de empezar a llenar el tablero, solo hay una combinación correcta.</li>
-        </ul>
-    </section>
+    <main class="todo-container">
 
-    <section class="tutorial-container">
-        <h3> TUTORIAL SODUKI </h3>
-        <p> aca va el video y / o fotos </p>
-    </section>
-
-    <section class="info-container">
-        <h3> INFO SOBRE EL SUDOKU </h3>
-        <p>
-            El Sudoku es un popular rompecabezas de lógica numérica que se juega en un tablero de 9x9 celdas. Aquí hay una descripción general del Sudoku:
-        </p>
-        <p> 
-            <h4> Historia </h4>
-            Aunque el Sudoku se popularizó en Japón en la década de 1980 bajo el nombre "Sudoku" (que significa "número único"), sus raíces se pueden rastrear hasta el siglo XVIII en Europa.
-        </p>
-        <p> 
-            <h4> Métodos de solución</h4>
+        <section class="reglas-container">
+            <h3 class="reglas-titulo">
+                <b>REGLAS SUDOKU CLASICO</b>
+            </h3>
+            <ul class="reglas">
+                <li class="regla"> El tablero debe llenarse con números del 1 al 9. </li>
+                <li class="regla"> Cada fila debe contener todos los números del 1 al 9 sin repetir.</li>
+                <li class="regla"> Cada columna debe contener todos los números del 1 al 9 sin repetir.</li>
+                <li class="regla"> Cada uno de los 9 bloques de 3x3 debe contener todos los números del 1 al 9 sin repetir.</li>
+                <li class="regla"> Cada Sudoku tiene una solución única. Esto significa que, aunque pueda haber varias maneras de empezar a llenar el tablero, solo hay una combinación correcta.</li>
+            </ul>
+        </section>
+    
+        <section class="tutorial-container">
+            <h3 style="margin-top: 60px;"> TUTORIAL SODUKI </h3>
+            <p> aca va el video y / o fotos </p>
+        </section>
+    
+        <section class="info-container">
+            <h3 style="margin-top: 60px;"> INFO SOBRE EL SUDOKU </h3>
+            <p>
+                El Sudoku es un popular rompecabezas de lógica numérica que se juega en un tablero de 9x9 celdas. Aquí hay una descripción general del Sudoku:
             
-            Resolver un Sudoku implica aplicar lógica y razonamiento deductivo para determinar el número correcto en cada celda basándose en las pistas proporcionadas y en la configuración actual del tablero.
-            No se requiere adivinación. Cada Sudoku tiene una solución única.        </p>
-        <p> 
-            <h4> Variantes y popularidad </h4>
-            
-            A lo largo de los años, han surgido muchas variantes del Sudoku, incluidos tamaños de tablero diferentes, formas más complejas y variaciones temáticas.
-            <p> El Sudoku se ha convertido en uno de los rompecabezas más populares del mundo, apareciendo en periódicos, libros, aplicaciones móviles y competencias.        </p> </p>
-        <p> 
-            <h4> Beneficios cognitivos</h4>
-            
-            Resolver Sudokus puede ayudar a mejorar la memoria, la concentración, el razonamiento lógico y las habilidades de resolución de problemas.        
-        </p>
-
-        <p> 
-            <h4> Tecnología</h4>
+                <h4 style="margin-top: 25px;"> Historia </h4>
+                Aunque el Sudoku se popularizó en Japón en la década de 1980 bajo el nombre "Sudoku" (que significa "número único"), sus raíces se pueden rastrear hasta el siglo XVIII en Europa.
             
             
-            Con el auge de la tecnología, ahora hay muchas aplicaciones y sitios web que ofrecen Sudokus interactivos, lo que facilita su disfrute en dispositivos digitales.
-        </p>
-        
-    </section>
+                <h4> Métodos de solución</h4>
+                
+                Resolver un Sudoku implica aplicar lógica y razonamiento deductivo para determinar el número correcto en cada celda basándose en las pistas proporcionadas y en la configuración actual del tablero.
+                No se requiere adivinación. Cada Sudoku tiene una solución única.
+            
+                <h4> Variantes y popularidad </h4>
+                
+                A lo largo de los años, han surgido muchas variantes del Sudoku, incluidos tamaños de tablero diferentes, formas más complejas y variaciones temáticas.
+                <p> El Sudoku se ha convertido en uno de los rompecabezas más populares del mundo, apareciendo en periódicos, libros, aplicaciones móviles y competencias.        </p> </p>
+             
+                <h4 style="margin-top: -22px;"> Beneficios cognitivos</h4>
+                
+                Resolver Sudokus puede ayudar a mejorar la memoria, la concentración, el razonamiento lógico y las habilidades de resolución de problemas.        
+            
+                <h4> Tecnología</h4>
+                
+                Con el auge de la tecnología, ahora hay muchas aplicaciones y sitios web que ofrecen Sudokus interactivos, lo que facilita su disfrute en dispositivos digitales.
+            </p>
+            
+        </section>
+    </main>
+    
 
 
     <script>

@@ -415,7 +415,7 @@ function poblarTablero() {
 
         // darle para que borre el numero
         if (i == "10") {
-            numeros.innerHTML = 'X';
+            numeros.innerHTML = ' <img src="../img/goma.svg" class="iconoGoma"> ';
             numeros.style.color = 'red';
         }
 

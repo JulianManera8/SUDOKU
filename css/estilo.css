@@ -1,8 +1,10 @@
 /*CONECTADO*/
 
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,700&display=swap');
 /*font-family: 'Kanit', sans-serif;*/
+/* font-family: 'Nunito Sans', sans-serif; */
 
 :root { /* ESTOS SON LOS COLORES EN LIGHT MODE (normal) */
     --color-fondo: #ffffff;
@@ -535,6 +537,8 @@ button:hover .button-text {
     opacity: 20%;
     cursor: default;
 }
+
+
 .numeroCompleto:hover {
     background-color: white !important;
 }
@@ -545,50 +549,6 @@ button:hover .button-text {
     background-color: var(--color-numerosNoActivos) !important;
     transition: 1s;
 }
-
-
-
-
-@media (width < 400px) {
-
-    .titulo {
-        margin-bottom: -10%;
-        
-    }
-
-    .titulo h1 {
-        position: static;
-        margin: 30px 15px;
-        
-    }
-
-    .main-game {
-        margin-top: 5px !important;
-    }
-
-    .main-sudoku-grid {
-        width: 80vw;
-    }
-
-    .main-errores-timer {
-        width: 90vw;
-    }
-    
-    .main-numeros-cell {
-        font-size: clamp(1.3rem, 3vw, 10px);
-        padding: 0px 3px;
-    }
-
-    .switch {
-        font-size: 17px;
-        position: absolute;
-        width: 64px;
-        height: 34px;
-        right: 0px !important;
-    }
-    
-}
-
 
 
 
@@ -708,7 +668,7 @@ button:hover .button-text {
 
 .paste-button {
     position: absolute;
-    left: 27px;
+    left: 40px;
     top: 33px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--color-fondoBtnJugar);
@@ -716,10 +676,11 @@ button:hover .button-text {
     box-shadow: rgba(0, 0, 0, .5) 0 3px 5px -1px,rgba(0, 0, 0, .4) 0 6px 10px 0,rgba(0, 0, 0, .3) 0 1px 18px 0;
     border-radius: 15px;
     border-bottom-left-radius: 0px;
+    z-index: 1500;
 }
   
 .button {
-color:var(--color-flechaBtn);
+  color:var(--color-flechaBtn);
   padding: 10px 15px;
   font-size: 15px;
   font-weight: bold;
@@ -727,6 +688,7 @@ color:var(--color-flechaBtn);
   border-radius: 15px;
   cursor: pointer;
 }
+
 
 .dropdown-content {
   display: none;
@@ -736,6 +698,8 @@ color:var(--color-flechaBtn);
   min-width: 200px;
   background-color: var(--color-fondoInfoA);
   border-radius: 0px 15px 15px 15px;
+  justify-content: center;
+  text-align: center;
 }
 
 .dropdown-content a {
@@ -744,6 +708,7 @@ color:var(--color-flechaBtn);
   text-decoration: none;
   display: block;
   transition: 0.1s;
+  width: 90%;
 }
 
 .dropdown-content a:hover {
@@ -769,3 +734,195 @@ color:var(--color-flechaBtn);
   
 }
   
+
+
+/*----------------ESTILOS DE INFO.HTML-----------------*/
+
+.button-volver-container {
+    position: absolute;
+    left: 50px;
+}
+
+
+.todo-container {
+    max-width: 80vw;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.reglas-container, .info-container, .tutorial-container {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    color: var(--color-errores-timer);
+
+}
+.reglas-container h3, .info-container h3, .tutorial-container h3 {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    text-decoration: underline;
+    margin-top: 40px;
+    font-family: 'Nunito Sans', sans-serif;
+    
+}
+
+.info-container h4 {
+    font-family: 'Nunito Sans', sans-serif;
+    text-transform: uppercase;
+    text-decoration: underline;
+    margin-top: 70px;
+    font-weight: 700;
+    
+}
+
+
+/*------------BTN VOLVER------------*/
+
+.button-resp {
+    display: none;
+}
+
+.btn-volver {
+   display: flex;
+   position: absolute;
+   left:40px;
+   top: 33px;
+   height: 3em;
+   width: 150px;
+   align-items: center;
+   justify-content: center;
+   border-radius: 3px;
+   letter-spacing: 1px;
+   transition: all 0.2s linear;
+   cursor: pointer;
+   border: none;
+   background: var(--color-fondoBtnJugar);
+   color: white;
+   border-radius: 2rem;
+   padding: 10px 15px;
+    font-size: 15px;
+}
+
+.btn-volver  > svg {
+   margin-right: 15px;
+   margin-left: 5px;
+   transition: all 0.4s ease-in;
+   scale: 180%;
+   fill: white;
+}
+
+.btn-volver:hover > svg {
+   font-size: 1.2em;
+   transform: translateX(-5px);
+}
+
+.btn-volver:hover {
+   box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
+   transform: translateY(-2px);
+}
+
+
+@media (width < 550px) {
+
+    .titulo {
+        margin-bottom: -12%;
+        
+    }
+
+    .titulo h1 {
+        position: static;
+        margin: 35px 15px;
+        
+    }
+
+    .main-game {
+        margin-top: 5px !important;
+    }
+
+    .main-sudoku-grid {
+        width: 80vw;
+    }
+
+    .main-errores-timer {
+        width: 90vw;
+    }
+    
+    .main-numeros-grid {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .main-numeros-cell {
+        font-size: clamp(1.3rem, 3vw, 10px);
+        padding: 0px 3px;
+    }
+
+    .switch {
+        font-size: 17px;
+        position: absolute;
+        width: 64px;
+        height: 34px;
+        right: 0px !important;
+    }
+
+    .paste-button {
+        left: 10px;
+        top: 30px;
+    }
+
+    .button {
+        display: none;
+    }
+
+    .button-resp {
+        display: flex;
+    }
+    
+    
+    
+}
+@media (610px > width < 551px) {
+
+    .btn-volver  > svg {
+        position: absolute;
+        width: 100%;
+        margin: var(--color-celdaActiva);
+    }
+
+    .btn-volver {
+        color: var(--color-fondoBtnJugar);
+        font-size: 1px;
+        width: 50px;
+        padding: 20px;
+        position: absolute;
+        left: 10px;
+        top: 30px;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+
+@media (width < 610px) {
+    .btn-volver  > svg {
+        position: absolute;
+        width: 100%;
+        margin: var(--color-celdaActiva);
+    }
+
+    .btn-volver {
+        color: var(--color-fondoBtnJugar);
+        font-size: 1px;
+        width: 50px;
+        padding: 20px;
+        position: absolute;
+        left: 10px;
+        top: 34px;
+        display: flex;
+        justify-content: center;
+    }
+}
