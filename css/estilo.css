@@ -23,6 +23,8 @@
     --color-numerosNoActivos: white;
     --color-mismoNumero: rgba(94, 207, 255, 0.504);
     --color-iconos: none;
+    --color-fondoInfoA: #255e90;
+
 }
 
 .darkMode { /* ESTOS SON LOS COLORES EN DARKMODE */
@@ -44,6 +46,9 @@
     --color-numerosNoActivos: black;
     --color-mismoNumero: rgb(70 158 196);
     --color-iconos: invert(100%);
+    --color-fondoInfoA: #255e90;
+
+
 }   
 
 
@@ -70,6 +75,13 @@ body {
 
 }
 
+.titulo h1 {
+    position: relative;
+    margin-left: 125px;
+    margin-right: 40px;
+    left: 0;
+    right: 0;
+}
 
 
 /*-----------------GRILLA DE TABLERO-----------------*/
@@ -541,6 +553,13 @@ button:hover .button-text {
 
     .titulo {
         margin-bottom: -10%;
+        
+    }
+
+    .titulo h1 {
+        position: static;
+        margin: 30px 15px;
+        
     }
 
     .main-game {
@@ -565,7 +584,7 @@ button:hover .button-text {
         position: absolute;
         width: 64px;
         height: 34px;
-        right: 10px;
+        right: 0px !important;
     }
     
 }
@@ -579,10 +598,9 @@ button:hover .button-text {
 
 .switch {
   font-size: 17px;
-  position: absolute;
+  position: relative;
   width: 64px;
   height: 34px;
-  right: 10px;
 }
 
 .switch input {
@@ -684,3 +702,70 @@ button:hover .button-text {
 .input:checked + .slider:before {
   transform: translateX(30px);
 }
+
+
+/*---------BOTON PARA MAS INFO---------*/
+
+.paste-button {
+    position: absolute;
+    left: 27px;
+    top: 33px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--color-fondoBtnJugar);
+    border: 0px solid black;
+    box-shadow: rgba(0, 0, 0, .5) 0 3px 5px -1px,rgba(0, 0, 0, .4) 0 6px 10px 0,rgba(0, 0, 0, .3) 0 1px 18px 0;
+    border-radius: 15px;
+    border-bottom-left-radius: 0px;
+}
+  
+.button {
+color:var(--color-flechaBtn);
+  padding: 10px 15px;
+  font-size: 15px;
+  font-weight: bold;
+  border: 2px solid transparent;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  font-size: 13px;
+  position: absolute;
+  z-index: 1;
+  min-width: 200px;
+  background-color: var(--color-fondoInfoA);
+  border-radius: 0px 15px 15px 15px;
+}
+
+.dropdown-content a {
+  color: var(--color-flechaBtn);
+  padding: 8px 10px;
+  text-decoration: none;
+  display: block;
+  transition: 0.1s;
+}
+
+.dropdown-content a:hover {
+  background-color: var(--color-fondoBtnJugar);
+  color: var(--color-flechaBtn);
+}
+
+
+.dropdown-content #top:hover {
+  border-radius: 0px 13px 0px 0px;
+}
+
+.dropdown-content #bottom:hover {
+  border-radius: 0px 0px 13px 13px;
+}
+
+.paste-button:hover button {
+  border-radius: 15px 15px 0px 0px;
+}
+
+.paste-button:hover .dropdown-content {
+  display: block;
+  
+}
+  

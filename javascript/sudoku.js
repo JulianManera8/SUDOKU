@@ -3,6 +3,8 @@
 //iniciar las variables que me toman los valores de las celdas y numeros que toco
 var numeroSelec = null;
 var celdaSelec = null;
+var numeroId = null;
+var numeroBorrar = false;
 
 //grilla de los numeros para seleccionar
 const gridNumeros = document.querySelector('#grillaNumeros')
@@ -390,7 +392,7 @@ function poblarTablero() {
     
     // GRID DE LOS NUMEROS
 
-    for (i = 1; i <= 9; i++) {
+    for (i = 1; i <= 10; i++) {
 
         const numeros = document.createElement("div");
         numeros.innerHTML = i;
@@ -411,10 +413,15 @@ function poblarTablero() {
             })
         });
 
+        // darle para que borre el numero
+        if (i == "10") {
+            numeros.innerHTML = 'X';
+            numeros.style.color = 'red';
+        }
+
         //crear efectivamente los numeros para elegir
         gridNumeros.appendChild(numeros);
     };
-
 
     //  GRID DE LAS CELDAS
     for (r = 0; r <= 8; r++) {
@@ -487,6 +494,11 @@ function poblarTablero() {
 
 function leerNumeroSelec() {
     numeroSelec = this.textContent;
+    numeroId = this.getAttribute('id');
+    
+    if (numeroId == '10') {
+        numeroSelec = null;
+    }
     
     limpiarNumIguales()
     let numerosIguales = celdasArreglo.filter( celda => celda.textContent == numeroSelec)
@@ -496,7 +508,7 @@ function leerNumeroSelec() {
     })
 
 
-    return numeroSelec
+    return numeroSelec, numeroId
 }
 
 function limpiarNumIguales() {
@@ -518,7 +530,7 @@ function limpiarNumIguales() {
 
 function ponerNumero(celda) {
 
-    
+
     //  ahora obtenemos la coordenada de la celda que puse 
     // para corroborar que este bien lo que estoy poniendo
     let coordenadas = celda.id.split('-'); // aca me da dos arreglos distitnos con r y c
@@ -546,8 +558,8 @@ function ponerNumero(celda) {
         } else if (numeroSelec == null) {
             celda.textContent = '';
             celda.classList.remove('numeroEquivocado');
-
-        } else {
+        
+        }  else {
             //si no conicide, aumentamos el error
             errores++;
             const divErrores = document.getElementById('errores').innerHTML = errores
@@ -562,9 +574,12 @@ function ponerNumero(celda) {
         
 
     } else if (celda.textContent != '') {
-
         marcarNumerosIguales(celda);
-    } 
+
+    } else if (numeroSelec === 10) { 
+        celda.textContent = '89'
+    }
+
 
 }
 

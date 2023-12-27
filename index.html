@@ -12,6 +12,16 @@
 <body>
 
     <header class="titulo">
+
+        <div class="paste-button">
+            <button class="button">INFO &nbsp; ▼</button>
+            <div class="dropdown-content">
+              <a id="top" href="info.html" target="_blank">REGLAS SUDOKU CLASICO</a>
+              <a id="middle" href="#" target="_blank">TUTORIAL</a>
+              <a id="bottom" href="#" target="_blank">INFO SOBRE EL SUDOKU</a>
+            </div>
+        </div>
+
         <h1> SODUKI </h1>
     
         <label class="switch" style="cursor: pointer; scale: 80%;">
@@ -25,7 +35,7 @@
 
     <main class="main-game">
 
-        <div class="main-errores-timer" id="errBtnTim">
+        <section class="main-errores-timer" id="errBtnTim">
             <div class="div-errores" >
                 <h4 class="errores"> ERRORES: <b id="errores"> 0 </b> / 3 </h4>
             </div>
@@ -42,7 +52,7 @@
                 <h4 class="timer" id="timer"> 00:00</h4>
             </div>
             
-        </div>
+        </section>
 
         <div id="btn-jugar"> 
             <button class="learn-more">
@@ -65,10 +75,11 @@
             </div>
         </div>
         
-        <div class="main-numeros-grid" id="grillaNumeros">
+        <section class="main-numeros-grid" id="grillaNumeros">
             <!-- <div class="main-numeros-cell numero"></div> -->
             <!-- creo los numeros estos desde js -->
-        </div>
+        </section>
+
 
     </main>
     
