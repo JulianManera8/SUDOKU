@@ -6,6 +6,11 @@
 /*font-family: 'Kanit', sans-serif;*/
 /* font-family: 'Nunito Sans', sans-serif; */
 
+.hidden {
+    display: none !important;
+}
+
+
 :root { /* ESTOS SON LOS COLORES EN LIGHT MODE (normal) */
     --color-fondo: #ffffff;
     --color-titulo: #001253;
@@ -84,6 +89,39 @@ body {
     left: 0;
     right: 0;
 }
+
+/*-------------- HOME elegir nivel --------------*/
+
+.main-home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: 50px auto;
+}
+
+.tituloNiveles-container {
+    font-size: clamp(1rem, 30vw, 1.25rem);
+    margin: auto;
+    color: var(--color-titulo)
+}
+
+.niveles-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    max-width: 80vw;
+    margin: auto;
+}
+
+.niveles {
+    color: var(--color-titulo)
+}
+
+/* .niveles input {
+    display: none;
+} */
+
 
 
 /*-----------------GRILLA DE TABLERO-----------------*/

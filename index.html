@@ -19,10 +19,9 @@
             <button class="button">INFO &nbsp; ▼</button>
             <div class="dropdown-content">
               <a id="top" href="info.html" target="_blank">REGLAS DEL SUDOKU CLASICO</a>
-              <a id="middle" href="#" target="_blank">TUTORIAL SODUKI </a>
-              <a id="bottom" href="#" target="_blank">INFO SOBRE EL SUDOKU</a>
+              <a id="middle" href="info.html" target="_blank">TUTORIAL SODUKI </a>
+              <a id="bottom" href="info.html" target="_blank">INFO SOBRE EL SUDOKU</a>
             </div>
-            
             
         </div>
 
@@ -37,56 +36,150 @@
         
     </header>
 
-    <main class="main-game">
+    <main>
 
-        <section class="main-errores-timer" id="errBtnTim">
-            <div class="div-errores" >
-                <h4 class="errores"> ERRORES: <b id="errores"> 0 </b> / 3 </h4>
+        <section class="main-home">
+
+            <div class="tituloNiveles-container">
+                <h3> ELIGE UN NIVEL </h3>
             </div>
 
-            <div class="btn-pausa-reset">
+            <div class="niveles-container" id="niveles">
 
-                <img src="img/btn-pausa.svg" class="btn-pausa" id="btn-pausa" hidden>
-                <img src="img/btn-play.svg" class="btn-play"  id="btn-play" hidden>
-                <img src="img/btn-reset.svg" class="btn-reset" id="btn-reset" hidden>
+                <div class="nivel">
+                    <label for="1"> 1 </label>
+                    <input type="checkbox" name="nivel" id="1">
+                </div>
 
+                <div class="nivel">
+                    <label for="2"> 2 </label>
+                    <input type="checkbox" name="nivel" id="2">
+                </div>
+
+                <div class="nivel">
+                    <label for="3"> 3 </label>
+                    <input type="checkbox" name="nivel" id="3">
+                </div>
+
+                <div class="nivel">
+                    <label for="4"> 4 </label>
+                    <input type="checkbox" name="nivel" id="4">
+                </div>
+
+                <div class="nivel">
+                    <label for="5"> 5 </label>
+                    <input type="checkbox" name="nivel" id="5">
+                </div>
+
+                <div class="nivel">
+                    <label for="6"> 6 </label>
+                    <input type="checkbox" name="nivel" id="6">
+                </div>
+
+                <div class="nivel">
+                    <label for="7"> 7 </label>
+                    <input type="checkbox" name="nivel" id="7">
+                </div>
+
+                <div class="nivel">
+                    <label for="8"> 8 </label>
+                    <input type="checkbox" name="nivel" id="8">
+                </div>
+
+                <div class="nivel">
+                    <label for="9"> 9 </label>
+                    <input type="checkbox" name="nivel" id="9">
+                </div>
+
+                <div class="nivel">
+                    <label for="10"> 10 </label>
+                    <input type="checkbox" name="nivel" id="10">
+                </div>
+
+                <div class="nivel">
+                    <label for="11"> 11 </label>
+                    <input type="checkbox" name="nivel" id="11">
+                </div>
+
+                <div class="nivel">
+                    <label for="12"> 12 </label>
+                    <input type="checkbox" name="nivel" id="12">
+                </div>
+
+                <div class="nivel">
+                    <label for="13"> 13 </label>
+                    <input type="checkbox" name="nivel" id="13">
+                </div>
+
+                <div class="nivel">
+                    <label for="14"> 14 </label>
+                    <input type="checkbox" name="nivel" id="14">
+                </div>
+
+                <div class="nivel">
+                    <label for="15"> 15 </label>
+                    <input type="checkbox" name="nivel" id="15">
+                </div>
+
+            
             </div>
 
-            <div class="div-timer">
-                <h4 class="timer" id="timer"> 00:00</h4>
+
+        </section>
+
+        <section class="main-game hidden">
+
+            <section class="main-errores-timer" id="errBtnTim">
+                <div class="div-errores" >
+                    <h4 class="errores"> ERRORES: <b id="errores"> 0 </b> / 3 </h4>
+                </div>
+    
+                <div class="btn-pausa-reset">
+    
+                    <img src="img/btn-pausa.svg" class="btn-pausa" id="btn-pausa" hidden>
+                    <img src="img/btn-play.svg" class="btn-play"  id="btn-play" hidden>
+                    <img src="img/btn-reset.svg" class="btn-reset" id="btn-reset" hidden>
+    
+                </div>
+    
+                <div class="div-timer">
+                    <h4 class="timer" id="timer"> 00:00</h4>
+                </div>
+                
+            </section>
+    
+            <div id="btn-jugar"> 
+                <button class="learn-more">
+                    <span class="circle" aria-hidden="true" hidden>
+                    <span class="icon arrow"></span>
+                    </span>
+                    <span class="button-text">JUGAR</span>
+                </button>
+            </div>
+    
+            <div class="mensajeFin">
             </div>
             
-        </section>
-
-        <div id="btn-jugar"> 
-            <button class="learn-more">
-                <span class="circle" aria-hidden="true" hidden>
-                <span class="icon arrow"></span>
-                </span>
-                <span class="button-text">JUGAR</span>
-            </button>
-        </div>
-
-        <div class="mensajeFin">
-        </div>
-        
-        <div class="paraCentrar">
-            <div class="main-sudoku-grid tablero" id="tablero">
-
-                <!-- <div class="celda border-right border-bottom"></div>
-                <div class="celda border-bottom"></div> -->
+            <div class="paraCentrar">
+                <div class="main-sudoku-grid tablero" id="tablero">
     
-            </div>
-        </div>
+                    <!-- <div class="celda border-right border-bottom"></div>
+                    <div class="celda border-bottom"></div> -->
         
-        <section class="main-numeros-grid" id="grillaNumeros">
-            <!-- <div class="main-numeros-cell numero"></div> -->
-            <!-- creo los numeros estos desde js -->
+                </div>
+            </div>
+            
+            <section class="main-numeros-grid" id="grillaNumeros">
+                <!-- <div class="main-numeros-cell numero"></div> -->
+                <!-- creo los numeros estos desde js -->
+            </section>
+    
+    
         </section>
-
 
     </main>
-    
+
+
 
     <script src="javascript/juego.js"></script>
     <script src="javascript/sudoku.js"></script>

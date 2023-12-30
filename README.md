@@ -13,6 +13,13 @@
 
     - ver como pingo hacer para poner para probar numeros como el juego del sudoku celular
 
+plan decestudio
+progrtama de lasmaterias
+analitico
+
+
+
+
 
 
 

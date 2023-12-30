@@ -6,6 +6,9 @@ var celdaSelec = null;
 var numeroId = null;
 var numeroBorrar = false;
 
+let arregloTablero = [];
+let arregloNumerosLS = [];
+
 //grilla de los numeros para seleccionar
 const gridNumeros = document.querySelector('#grillaNumeros')
 const gridSudoku = document.querySelector('#tablero')
@@ -22,6 +25,12 @@ let esPicable = false;
 
 // ARREGLO PARA LOS NUMEROS QUE ESTEN BIEN PUESTOS
 let numerosBien = [];
+
+
+// LEER QUE NIVEL SELECCIONA
+let nivelSelec = '';
+
+
 
 // DISTINTOS tableros de sudoku
 //ESTO PROXIMAMENTE PASA PARA LA BASE DE DATOS
@@ -383,6 +392,56 @@ var solucion15 = [
     '965287431'
 ];
 
+
+// ---------------PARTE DE SELECCION DEL NIVEL QUE VA A JUGAR---------------
+
+const nivelesTodos = document.getElementById('niveles')
+const niveles = document.getElementsByName("nivel")
+
+leerNivel();
+function leerNivel() {
+
+    nivelesTodos.addEventListener("click", leerCheck)
+
+}
+
+function leerCheck(e) {
+
+    if (e.target.id != 'niveles') {
+        nivelSelec =  e.target.id
+        jugarNivel(nivelSelec)
+    }
+
+
+}
+
+function jugarNivel(nivelSelec) {
+    
+    if (nivelSelec != '') {
+        parseInt(nivelSelec)
+        
+        return nivelSelec
+    }
+ 
+}
+
+// intentar hacer todo en una function, y despues usar un switch-case 
+//para tomar el tablero segun el nivel elegido
+
+
+
+
+
+
+// function limpiarCheckeds() {
+//     for (let i = 0; i < niveles.length; i++) {
+//         niveles[i].checked = false;
+//     }
+// }
+
+
+
+
 //apenas cargue la pag, se llena el tablero
 window.onload = function () {
     poblarTablero();
@@ -448,8 +507,8 @@ function poblarTablero() {
             //aca llenamos el tablero con el arreglo del tablero que elijamos
             //ESTE EJEMPLO ES CON EL TABLERO1, SI QUIERO OTRO 
             //TENGO Q PONER TABLERO 2 en la condicion del IF y tmb abajo de eso
-            if (tablero15[r][c] != "-" ) {
-                celda.innerHTML = tablero15[r][c]
+            if (tablero1[r][c] != "-" ) {
+                celda.innerHTML = tablero1[r][c]
             }
             
             //QUE NO HAGA HOVER CON LAS CELDAS QUE ESTABAN DESDE UN PRINCIPIO
@@ -492,6 +551,8 @@ function poblarTablero() {
 
 }
 
+
+
 function leerNumeroSelec() {
     numeroSelec = this.textContent;
     numeroId = this.getAttribute('id');
@@ -526,6 +587,14 @@ function limpiarNumIguales() {
     
 }
 
+function agregarLocalStorage(arregloTablero) {
+    
+    localStorage.setItem('tablero', JSON.stringify(arregloTablero));
+    let arregloNumerosLS = JSON.parse(localStorage.getItem('tablero'));
+
+    
+    return arregloNumerosLS
+}
 
 
 function ponerNumero(celda) {
@@ -542,7 +611,7 @@ function ponerNumero(celda) {
     if (numeroSelec != null && celda.textContent == '' || celda.classList.contains('numeroEquivocado')) {
 
         //comprobamos que el numero este bien segun la solucion
-        if (solucion15[r][c] == numeroSelec) {
+        if (solucion1[r][c] == numeroSelec) {
             //si el nuemro seleccionado coincide con el indice de la solucion, joya
             celda.textContent = numeroSelec
             celda.classList.remove('numeroEquivocado');
@@ -580,6 +649,11 @@ function ponerNumero(celda) {
         celda.textContent = '89'
     }
 
+    arregloTablero = [];
+    celdasArreglo.forEach(celda => {
+        arregloTablero.push(celda.textContent);
+        agregarLocalStorage(arregloTablero);
+    });
 
 }
 
@@ -751,6 +825,8 @@ function sumarArrBien(celda) {
             numero9.classList.add('numeroCompleto');
         }
 
+        
+
         if (numerosBien.length == 81) {
 
             cronometrar = false;
@@ -824,6 +900,7 @@ function sumarArrBien(celda) {
 
     }
 }
+
 
 
 // FUNCIONALIDAD DEL TIMER
@@ -1290,10 +1367,5 @@ const darkMode = document.getElementById("theme")
 darkMode.onclick = function () {
     document.body.classList.toggle("darkMode")
 }
-
-
-
-
-
 
 
