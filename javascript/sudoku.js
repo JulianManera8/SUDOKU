@@ -1130,10 +1130,13 @@ function resetJuego() {
         btnReset.style.opacity = '0'
         btnPausa.style.opacity = '0'
         btnInicio.style.opacity = '0'
+        btnHome.style.opacity = '0'
         
         btnReset.style.transition = 'all 0.8s ease'
         btnPausa.style.transition = 'all 0.8s ease'
         btnInicio.style.transition = 'all 0.8s ease'
+        btnHome.style.transition = 'all 0.8s ease'
+
 
         setTimeout(() => {
             btnJugar.style.opacity = '100%'
