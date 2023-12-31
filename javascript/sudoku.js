@@ -68,15 +68,25 @@ function elegirNivel(nivelSelec) {
     switch (nivelSelec) {
         case '01':
             numeroTablero = [
-                "--74916-5",
-                "2---6-3-9",
-                "-----7-1-",
-                "-586----4",
-                "--3----9-",
-                "--62--187",
-                "9-4-7---2",
-                "67-83--41",
-                "81--45-6-"
+                // "--74916-5",
+                // "2---6-3-9",
+                // "-----7-1-",
+                // "-586----4",
+                // "--3----9-",
+                // "--62--187",
+                // "9-4-7---2",
+                // "67-83--41",
+                // "81--45-6-"
+
+                "387491625",
+                "241568379",
+                "569327418",
+                "758619234",
+                "123784596",
+                "496253187",
+                "934176852",
+                "675832941",
+                "81294576-"
             ]; 
             numeroSolucion = [
                 "387491625",
@@ -779,7 +789,7 @@ function perderJuego(errores) {
                     </div>
                     
                     <div class="botones"> 
-                        <div class="home" id="finHome">
+                        <div class="home" id="finHome" onclick="HomeDesdeFinPerdio()">
                             <img src="../img/home.svg" alt="Inicio">
                         </div>
                         <div class="reiniciar" onclick="resetDesdeFinPerdio()">
@@ -936,20 +946,21 @@ function sumarArrBien(celda) {
                     </div>
                     
                     <div class="botones"> 
-                        <div class="home" id="finHome">
+                        <div class="home" id="finHome" onclick="homeDesdeFinGano()">
                             <img src="../img/home.svg" alt="Inicio">
                         </div>
                         <div class="reiniciar" onclick="resetDesdeFinGano()">
                             <img src="../img/btn-reset.svg" alt="Reset">
-                        </div>
-                        <div class="sigNivel" id="finSigNivel"> 
-                            <img src="../img/sigNivel.svg" alt="Siguiente">
                         </div>
                     </div>
                     
                     
                     `;
 
+                //ESTE ES EL BOTON DE JUGAR SIGUIENTE NIVEL-------------------
+                // <div class="sigNivel" id="finSigNivel"> 
+                //     <img src="../img/sigNivel.svg" alt="Siguiente">
+                // </div>
 
                 setTimeout(() => {
                     fin.style.scale = '100%'
@@ -1017,7 +1028,7 @@ function eventos() {
                 btnHome.style.transition = 'all 0.5s ease';
     
                 
-            }, 1000);
+            }, 700);
 
             setTimeout(() => {
                 btnPausa.removeAttribute('hidden')
@@ -1030,7 +1041,7 @@ function eventos() {
                 numerosContenedor.style.opacity = '100'
                 numerosContenedor.style.transition = 'all 0.5s ease';
                 
-            }, 700);
+            }, 500);
 
         }, 700);
 
@@ -1199,15 +1210,18 @@ function resetDesdeFinGano() {
     esPicable = false;
 
     mensajeFin.removeChild(mensajeFin.children[0])
-    // console.log(mensajeFin.children[0]) //
 
     btnReset.style.opacity = '0'
     btnPausa.style.opacity = '0'
     btnInicio.style.opacity = '0'
-    
+    btnHome.style.opacity = '0'
+
+
     btnReset.style.transition = 'all 0.8s ease'
     btnPausa.style.transition = 'all 0.8s ease'
     btnInicio.style.transition = 'all 0.8s ease'
+    btnHome.style.transition = 'all 0.8s ease'
+
 
     setTimeout(() => {
         btnJugar.style.opacity = '100%'
@@ -1215,6 +1229,8 @@ function resetDesdeFinGano() {
 
         btnReset.setAttribute('hidden', true)
         btnPausa.setAttribute('hidden', true)
+        btnHome.setAttribute('hidden', true)
+
 
         btnContenedor.classList.remove('moverArriba')
 
@@ -1229,8 +1245,10 @@ function resetDesdeFinGano() {
 
     tableroCss.style.opacity = '10%'
     numerosContenedor.style.opacity = '10%'
+
     erroresCss.style.scale  = '100%';
     erroresCss.style.transition = 'all 1s ease'
+    
     tiempo.style.scale  = '100%';
     tiempo.style.transition = 'all 1s ease'
 
@@ -1348,6 +1366,148 @@ function resetDesdeFinPerdio() {
 
     reestablecerNum();
     limpiarNumIguales();
+}
+
+function homeDesdeFinGano() {
+    
+    cronometrar = false
+    acumulado = 0
+    esPicable = false;
+
+    mensajeFin.removeChild(mensajeFin.children[0])
+    // console.log(mensajeFin.children[0]) //
+
+
+    cronometrar = false
+    acumulado = 0
+    esPicable = false;
+
+    numeroSolucion = [];
+        
+    numeroTablero = [];
+    reestablecerNum();
+        
+    numerosBien = [];
+
+    celdasArreglo.forEach(celda => {
+       celda.remove();
+    })
+
+
+    numerosArreglo.forEach(numero => {
+        numero.remove();
+    })
+
+    setTimeout(() => {
+        game.style.opacity = '0';
+        game.style.transitionDuration = '1s';
+
+        let erroresHtml = document.querySelector('#errores')
+        errores = errores*0
+        erroresHtml.textContent = errores
+
+    }, 300);
+    
+    //que se haga el cambio de game a home
+    setTimeout(() => {
+        game.classList.add('hidden');
+        home.classList.remove('hidden')
+        tableroCss.style.opacity = '10%'
+        numerosContenedor.style.opacity = '10%'
+        
+    }, 1200);
+
+    //que aparezca el game con transition lindo
+    setTimeout(() => {
+        home.style.opacity = '100';
+        home.style.transitionDuration = '1s';
+    }, 1500);
+
+    setTimeout(() => {
+        errorBtnTimer.style.opacity = '100%';
+        errorBtnTimer.style.transition = 'all 1s ease'
+    }, 1800);
+
+
+    erroresCss.style.scale  = '100%';
+    erroresCss.style.transition = 'all 1s ease' 
+
+    tiempo.style.scale  = '100%';
+    tiempo.style.transition = 'all 1s ease'
+
+
+
+
+} 
+
+function HomeDesdeFinPerdio() {
+
+    cronometrar = false
+    acumulado = 0
+    esPicable = false;
+
+    mensajeFin.removeChild(mensajeFin.children[0])
+    // console.log(mensajeFin.children[0]) //
+
+
+    cronometrar = false
+    acumulado = 0
+    esPicable = false;
+
+    numeroSolucion = [];
+        
+    numeroTablero = [];
+    reestablecerNum();
+        
+    numerosBien = [];
+
+    celdasArreglo.forEach(celda => {
+       celda.remove();
+    })
+
+
+    numerosArreglo.forEach(numero => {
+        numero.remove();
+    })
+
+    setTimeout(() => {
+        game.style.opacity = '0';
+        game.style.transitionDuration = '1s';
+
+        let erroresHtml = document.querySelector('#errores')
+        errores = errores*0
+        erroresHtml.textContent = errores
+
+    }, 300);
+    
+    //que se haga el cambio de game a home
+    setTimeout(() => {
+        game.classList.add('hidden');
+        home.classList.remove('hidden')
+        tableroCss.style.opacity = '10%'
+        numerosContenedor.style.opacity = '10%'
+        
+    }, 1200);
+
+    //que aparezca el game con transition lindo
+    setTimeout(() => {
+        home.style.opacity = '100';
+        home.style.transitionDuration = '1s';
+    }, 1500);
+
+    setTimeout(() => {
+        errorBtnTimer.style.opacity = '100%';
+        errorBtnTimer.style.transition = 'all 1s ease'
+    }, 1800);
+
+
+    erroresCss.style.scale  = '100%';
+    erroresCss.style.transition = 'all 1s ease' 
+
+    tiempo.style.scale  = '100%';
+    tiempo.style.transition = 'all 1s ease'
+
+
 }
 
 function irHome() {
