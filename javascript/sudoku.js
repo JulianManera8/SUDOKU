@@ -45,7 +45,7 @@ const niveles = document.getElementsByName("nivel")
 //que nos lea el click inicial en el nivel
 leerNivel();
 function leerNivel() {
-    nivelesTodos.addEventListener("click", leerCheck)
+    document.addEventListener("click", leerCheck)
 }
 
 //que nos tome el id del nivel que ponemos
@@ -719,11 +719,17 @@ function marcarNumerosIguales(celda) {
                 
     limpiarNumIguales()
 
+    
     let numerosIguales = celdasArreglo.filter( celda => celda.textContent == numeroCelda)
-
+    
     numerosIguales.forEach(numero => {
-        numero.style.backgroundColor = 'var(--color-mismoNumero)'
-    })
+        if (!numero.classList.contains('numeroEquivocado')) {
+        numero.style.backgroundColor = 'var(--color-mismoNumero)';
+        }
+    });
+    
+
+    
 }
 
 //perder cuando llegamos a 3 errores

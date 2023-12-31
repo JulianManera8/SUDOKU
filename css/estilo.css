@@ -31,6 +31,7 @@
     --color-mismoNumero: rgba(94, 207, 255, 0.504);
     --color-iconos: none;
     --color-fondoInfoA: #255e90;
+    --color-fondoNiveles: #e3edf7;
 
 }
 
@@ -54,8 +55,7 @@
     --color-mismoNumero: rgb(70 158 196);
     --color-iconos: invert(100%);
     --color-fondoInfoA: #255e90;
-
-
+    --color-fondoNiveles: #699af4;
 }   
 
 
@@ -97,7 +97,7 @@ body {
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    margin: 50px auto;
+    margin: 30px auto;
 }
 
 .tituloNiveles-container {
@@ -108,14 +108,19 @@ body {
 
 .niveles-container {
     display: flex;
-    gap: 20px;
+    gap: 30px;
     flex-wrap: wrap;
-    max-width: 80vw;
+    width: 80vw;
+    max-width: 500px;
     margin: auto;
+    justify-content: center;
+    text-align: center;
+
 }
 
 #niveles {
-    color: var(--color-titulo)
+    color: var(--color-titulo);
+
 }
 
 #niveles input  {
@@ -124,7 +129,43 @@ body {
 
 #niveles label {
     cursor: pointer;
+    width: 10vw;
+    height: 40px;
 }
+
+.nivelDiv {
+  display: grid;
+  place-items: center;
+  background: var(--color-fondoNiveles);
+  padding: .5em;
+  border-radius: 10px;
+  box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15);
+  border: 1px solid rgba(0,0,0,0);
+  cursor: pointer;
+  transition: transform 0.5s;
+  width: 40px;
+  height: 35px;
+  justify-content: center;
+
+}
+
+.nivelDiv:hover {
+  box-shadow: inset 4px 4px 6px -1px rgba(0,0,0,0.2),
+	      inset -4px -4px 6px -1px rgba(255,255,255,0.7),
+	      0.5px 0.5px 0px rgba(0,0,0,0.15),
+	      0px 12px 10px -10px rgba(0,0,0,0.05);
+  border: 1px solid rgba(0,0,0,0.1);
+  transform: translateY(0.25em);
+}
+
+.nivelDiv label {
+  margin: auto;
+}
+
+.nivelDiv:hover label {
+  fill: #333333;
+}
+
 
 
 
@@ -393,9 +434,6 @@ button:hover .button-text {
 
 
 /*----------------ESTILOS DESDE JS----------------*/
-.celdaActiva {
-    background-color: var(--color-celdaActiva) !important;
-}
 
 .conNumeroInicio {
     background-color: rgba(246, 226, 183, 0.245);
@@ -846,7 +884,7 @@ button:hover .button-text {
    display: flex;
    position: absolute;
    left:40px;
-   top: 33px;
+   top: 31px;
    height: 3em;
    width: 150px;
    align-items: center;
@@ -927,7 +965,7 @@ button:hover .button-text {
 
     .paste-button {
         left: 10px;
-        top: 30px;
+        top: 27px;
     }
 
     .button {
@@ -936,6 +974,10 @@ button:hover .button-text {
 
     .button-resp {
         display: flex;
+    }
+
+    .btn-volver {
+        top: 30;
     }
     
     
