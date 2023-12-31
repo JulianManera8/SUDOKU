@@ -114,13 +114,17 @@ body {
     margin: auto;
 }
 
-.niveles {
+#niveles {
     color: var(--color-titulo)
 }
 
-/* .niveles input {
+#niveles input  {
     display: none;
-} */
+}
+
+#niveles label {
+    cursor: pointer;
+}
 
 
 
@@ -133,6 +137,7 @@ body {
     text-align: center;
     align-items: center;
     margin-top: -30px !important;
+    opacity: 0;
 }
 
 .main-errores-timer {
@@ -203,6 +208,18 @@ body {
     transition: 0.2s;
 }
 #btn-pausa:active {
+    scale: 95%;
+    transition: 0.2s;
+}
+
+#btn-home {
+    opacity: 0;
+}
+#btn-home:hover {
+    scale: 110%;
+    transition: 0.2s;
+}
+#btn-home:active {
     scale: 95%;
     transition: 0.2s;
 }

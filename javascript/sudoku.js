@@ -29,368 +29,12 @@ let numerosBien = [];
 
 // LEER QUE NIVEL SELECCIONA
 let nivelSelec = '';
+let numeroTablero = [];
+let numeroSolucion = [];
 
-
-
-// DISTINTOS tableros de sudoku
-//ESTO PROXIMAMENTE PASA PARA LA BASE DE DATOS
-var tablero1 = [
-    "--74916-5",
-    "2---6-3-9",
-    "-----7-1-",
-    "-586----4",
-    "--3----9-",
-    "--62--187",
-    "9-4-7---2",
-    "67-83--41",
-    "81--45-6-"
-
-    //PARA  DARLE LA FUNCIONALIDAD DE TERMINAR EL JUEGO
-
-    //"387491625",
-    //"241568379",
-    //"569327418",
-    //"758619234",
-    //"123784596",
-    //"496253187",
-    //"934176852",
-    //"675832941",
-    //"81294----"
-] 
-var solucion1 = [
-    "387491625",
-    "241568379",
-    "569327418",
-    "758619234",
-    "123784596",
-    "496253187",
-    "934176852",
-    "675832941",
-    "812945763"
-]
-
-var tablero2 = [
-    "548-23---",
-    "76---458-",
-    "--2578---",
-    "--49-27-6",
-    "3758----9",
-    "---715348",
-    "2563---17",
-    "---4572-3",
-    "4--261--5"
-];
-
-var solucion2 = [
-    "548623971",
-    "763194582",
-    "192578634",
-    "814932756",
-    "375846129",
-    "629715348",
-    "256389417",
-    "981457263",
-    "437261895"
-];
-
-var tablero3 = [
-    "78932----",
-    "--164-792",
-    "64275----",
-    "96--1-57-",
-    "1---836--",
-    "324---18-",
-    "-7319----",
-    "---87--31",
-    "81-----47"
-];
-var solucion3 = [
-    "789321456",
-    "531648792",
-    "642759318",
-    "968412573",
-    "157983624",
-    "324567189",
-    "273194865",
-    "496875231",
-    "815236947"
-];
-
-var tablero4 = [
-    "59874----",
-    "37-----84",
-    "--4-3--19",
-    "86----3--",
-    "1---976--",
-    "-----5198",
-    "45---29--",
-    "2-69-----",
-    "----76--5"
-];
-var solucion4 = [
-    "598741236",
-    "371629584",
-    "624538719",
-    "869214357",
-    "135897642",
-    "742365198",
-    "457182963",
-    "286953471",
-    "913476825"
-];
-
-var tablero5 = [
-    "98564----",
-    "-----8954",
-    "--49---78",
-    "5---7---6",
-    "---5863--",
-    "64-----85",
-    "----51832",
-    "-53-----7",
-    "--24--519"
-];
-var solucion5 = [
-    "985647123",
-    "267318954",
-    "314925678",
-    "538174296",
-    "729586341",
-    "641239785",
-    "496751832",
-    "153892467",
-    "872463519"
-];
-
-var tablero6 = [
-    "--598----",
-    "29----7--",
-    "--87---64",
-    "----682--",
-    "---549---",
-    "9----764-",
-    "--9653---",
-    "3----28--",
-    "---891---"
-];
-var solucion6 = [
-    "745986321",
-    "296134758",
-    "138725964",
-    "514368279",
-    "627549183",
-    "983217645",
-    "879653412",
-    "351472896",
-    "462891537"
-];
-
-var tablero7 = [
-    '--2398---',
-    '--84---29',
-    '---5123--',
-    '24----15-',
-    '---263--7',
-    '--7145---',
-    '--38---41',
-    '7---519--',
-    '---9342--'
-];
-var solucion7 = [
-    '562398714',
-    '138476529',
-    '479512386',
-    '246789153',
-    '815263497',
-    '397145862',
-    '953827641',
-    '724651938',
-    '681934275'
-];
-
-var tablero8 = [
-    '-98-32---',
-    '-62----83',
-    '----786-9',
-    '---123---',
-    '----96--1',
-    '6---4529-',
-    '---281---',
-    '18--5--6-',
-    '-2-3-4---'
-];
-var solucion8 = [
-    '598632174',
-    '762419583',
-    '413578629',
-    '849123756',
-    '275896431',
-    '631745298',
-    '356281947',
-    '184957362',
-    '927364815'
-];
-
-var tablero9 = [
-    "854692---",
-    "--1854692",
-    "692-----4",
-    "48-------",
-    "---48--69",
-    "2----74--",
-    "----26-13",
-    "7--54----",
-    "92------8"
-];
-var solucion9 = [
-    "854692371",
-    "371854692",
-    "692371854",
-    "485269137",
-    "137485269",
-    "269137485",
-    "548926713",
-    "713548926",
-    "926713548" 
-];
-
-var tablero10 = [
-    '95-824---',
-    '--43---62',
-    '31-----4-',
-    '--5-42---',
-    '---658--1',
-    '-2173----',
-    '29---15--',
-    '1--5-7---',
-    '--7--36--'
-];
-var solucion10 = [
-    '956824173',
-    '784315962',
-    '312976845',
-    '635142798',
-    '479658321',
-    '821739456',
-    '298461537',
-    '163597284',
-    '547283619'
-];
-
-var tablero11 = [
-    '--8462---',
-    '94---57--',
-    '---798---',
-    '81----974',
-    '2--85---3',
-    '--3--72--',
-    '--428---9',
-    '3---796--',
-    '--96---37'
-];
-var solucion11 = [
-    '758462391',
-    '942135786',
-    '136798425',
-    '815326974',
-    '297854163',
-    '463917258',
-    '674283519',
-    '381579642',
-    '529641837'
-];
-
-var tablero12 = [
-    '4-689----',
-    '-8----46-',
-    '--941----',
-    '67----14-',
-    '--4658---',
-    '89---425-',
-    '--8263---',
-    '36---198-',
-    '--19-7---'
-];
-var solucion12 = [
-    '456892317',
-    '182735469',
-    '739416825',
-    '675329148',
-    '214658793',
-    '893174256',
-    '948263571',
-    '367541982',
-    '521987634'
-];
-
-var tablero13 = [
-    '-8--3-6--',
-    '--916----',
-    '-63---79-',
-    '----932--',
-    '-2-58----',
-    '---214---',
-    '34---6--2',
-    '-51-4---9',
-    '----7---4'
-];
-var solucion13 = [
-    '485739621',
-    '279168453',
-    '163425798',
-    '518693247',
-    '924587136',
-    '736214985',
-    '347956812',
-    '651842379',
-    '892371564'
-];
-
-var tablero14 = [
-    '--821---3',
-    '6---95--1',
-    '--146---5',
-    '-35---64-',
-    '7---5---9',
-    '---634---',
-    '1---895--',
-    '--3-46---',
-    '57---38--'
-];
-var solucion14 = [
-    '458217963',
-    '627395481',
-    '391468275',
-    '835971642',
-    '764852319',
-    '219634758',
-    '142789536',
-    '983546127',
-    '576123894'
-];
-
-var tablero15 = [
-    '--4826---',
-    '58---91--',
-    '--215----',
-    '----62--8',
-    '6-1-9---3',
-    '8---716-4',
-    '-186----5',
-    '3---15-8-',
-    '9--2---31'
-];
-var solucion15 = [
-    '194826357',
-    '586739142',
-    '732154869',
-    '479362518',
-    '651498723',
-    '823571694',
-    '218643975',
-    '347915286',
-    '965287431'
-];
+//activar y desactivar el hidden de home y game
+const game = document.getElementById('main-game')
+const home = document.getElementById('main-home');
 
 
 // ---------------PARTE DE SELECCION DEL NIVEL QUE VA A JUGAR---------------
@@ -398,56 +42,482 @@ var solucion15 = [
 const nivelesTodos = document.getElementById('niveles')
 const niveles = document.getElementsByName("nivel")
 
+//que nos lea el click inicial en el nivel
 leerNivel();
 function leerNivel() {
-
     nivelesTodos.addEventListener("click", leerCheck)
-
 }
 
+//que nos tome el id del nivel que ponemos
 function leerCheck(e) {
 
     if (e.target.id != 'niveles') {
         nivelSelec =  e.target.id
-        jugarNivel(nivelSelec)
-    }
 
+        if (nivelSelec != '') {
+            parseInt(nivelSelec)
+            elegirNivel(nivelSelec);
+        }
+    }
 
 }
 
-function jugarNivel(nivelSelec) {
+//que nos tome el tablero segun el nivel que ponemos
+function elegirNivel(nivelSelec) {
     
-    if (nivelSelec != '') {
-        parseInt(nivelSelec)
-        
-        return nivelSelec
+    switch (nivelSelec) {
+        case '01':
+            numeroTablero = [
+                "--74916-5",
+                "2---6-3-9",
+                "-----7-1-",
+                "-586----4",
+                "--3----9-",
+                "--62--187",
+                "9-4-7---2",
+                "67-83--41",
+                "81--45-6-"
+            ]; 
+            numeroSolucion = [
+                "387491625",
+                "241568379",
+                "569327418",
+                "758619234",
+                "123784596",
+                "496253187",
+                "934176852",
+                "675832941",
+                "812945763"
+            ];
+
+            poblarTablero(numeroTablero);
+            aparecerTablero();
+            break;
+
+        case '02':
+            numeroTablero = [
+                "548-23---",
+                "76---458-",
+                "--2578---",
+                "--49-27-6",
+                "3758----9",
+                "---715348",
+                "2563---17",
+                "---4572-3",
+                "4--261--5"
+            ];
+            numeroSolucion = [
+                "548623971",
+                "763194582",
+                "192578634",
+                "814932756",
+                "375846129",
+                "629715348",
+                "256389417",
+                "981457263",
+                "437261895"
+            ];
+            
+            poblarTablero(numeroTablero);
+            aparecerTablero();
+            break;
+
+        case '03':
+            numeroTablero = [
+                "78932----",
+                "--164-792",
+                "64275----",
+                "96--1-57-",
+                "1---836--",
+                "324---18-",
+                "-7319----",
+                "---87--31",
+                "81-----47"
+            ];
+            numeroSolucion = [
+                "789321456",
+                "531648792",
+                "642759318",
+                "968412573",
+                "157983624",
+                "324567189",
+                "273194865",
+                "496875231",
+                "815236947"
+            ];
+
+            poblarTablero(numeroTablero);
+            aparecerTablero()
+            break;
+
+        case '04':
+            numeroTablero = [
+                "59874----",
+                "37-----84",
+                "--4-3--19",
+                "86----3--",
+                "1---976--",
+                "-----5198",
+                "45---29--",
+                "2-69-----",
+                "----76--5"
+            ];
+            numeroSolucion = [
+                "598741236",
+                "371629584",
+                "624538719",
+                "869214357",
+                "135897642",
+                "742365198",
+                "457182963",
+                "286953471",
+                "913476825"
+            ];
+
+            poblarTablero(numeroTablero);
+            aparecerTablero()
+            break;
+
+        case '05':
+            numeroTablero = [
+                "98564----",
+                "-----8954",
+                "--49---78",
+                "5---7---6",
+                "---5863--",
+                "64-----85",
+                "----51832",
+                "-53-----7",
+                "--24--519"
+            ];
+            numeroSolucion = [
+                "985647123",
+                "267318954",
+                "314925678",
+                "538174296",
+                "729586341",
+                "641239785",
+                "496751832",
+                "153892467",
+                "872463519"
+            ];
+
+            poblarTablero(numeroTablero);
+            aparecerTablero();
+            break;
+
+        case '06':
+            numeroTablero = [
+            "--598----",
+            "29----7--",
+            "--87---64",
+            "----682--",
+            "---549---",
+            "9----764-",
+            "--9653---",
+            "3----28--",
+            "---891---"
+            ];
+            numeroSolucion = [
+            "745986321",
+            "296134758",
+            "138725964",
+            "514368279",
+            "627549183",
+            "983217645",
+            "879653412",
+            "351472896",
+            "462891537"
+            ];
+
+            poblarTablero(numeroTablero);
+            aparecerTablero();
+            break;
+
+        case '07':
+            numeroTablero = [
+                '--2398---',
+                '--84---29',
+                '---5123--',
+                '24----15-',
+                '---263--7',
+                '--7145---',
+                '--38---41',
+                '7---519--',
+                '---9342--'
+            ];
+            numeroSolucion = [
+                '562398714',
+                '138476529',
+                '479512386',
+                '246789153',
+                '815263497',
+                '397145862',
+                '953827641',
+                '724651938',
+                '681934275'
+            ];
+            
+            poblarTablero(numeroTablero);
+            aparecerTablero();
+            break;
+
+        case '08':
+            numeroTablero = [
+                '-98-32---',
+                '-62----83',
+                '----786-9',
+                '---123---',
+                '----96--1',
+                '6---4529-',
+                '---281---',
+                '18--5--6-',
+                '-2-3-4---'
+            ];
+            numeroSolucion = [
+                '598632174',
+                '762419583',
+                '413578629',
+                '849123756',
+                '275896431',
+                '631745298',
+                '356281947',
+                '184957362',
+                '927364815'
+            ];
+
+            poblarTablero(numeroTablero);
+            aparecerTablero();
+            break;
+
+        case '09':
+            numeroTablero = [
+                "854692---",
+                "--1854692",
+                "692-----4",
+                "48-------",
+                "---48--69",
+                "2----74--",
+                "----26-13",
+                "7--54----",
+                "92------8"
+            ];
+            numeroSolucion = [
+                "854692371",
+                "371854692",
+                "692371854",
+                "485269137",
+                "137485269",
+                "269137485",
+                "548926713",
+                "713548926",
+                "926713548" 
+            ];
+
+            poblarTablero(numeroTablero);
+            aparecerTablero();
+            break;
+
+        case '010':
+            numeroTablero = [
+                '95-824---',
+                '--43---62',
+                '31-----4-',
+                '--5-42---',
+                '---658--1',
+                '-2173----',
+                '29---15--',
+                '1--5-7---',
+                '--7--36--'
+            ];
+            numeroSolucion = [
+                '956824173',
+                '784315962',
+                '312976845',
+                '635142798',
+                '479658321',
+                '821739456',
+                '298461537',
+                '163597284',
+                '547283619'
+            ];
+
+            poblarTablero(numeroTablero);
+            aparecerTablero();
+            break;
+
+        case '011':
+            numeroTablero = [
+                '--8462---',
+                '94---57--',
+                '---798---',
+                '81----974',
+                '2--85---3',
+                '--3--72--',
+                '--428---9',
+                '3---796--',
+                '--96---37'
+            ];
+            numeroSolucion = [
+                '758462391',
+                '942135786',
+                '136798425',
+                '815326974',
+                '297854163',
+                '463917258',
+                '674283519',
+                '381579642',
+                '529641837'
+            ];
+
+            poblarTablero(numeroTablero);
+            aparecerTablero();
+            break;
+
+        case '012':
+            numeroTablero = [
+                '4-689----',
+                '-8----46-',
+                '--941----',
+                '67----14-',
+                '--4658---',
+                '89---425-',
+                '--8263---',
+                '36---198-',
+                '--19-7---'
+            ];
+            numeroSolucion = [
+                '456892317',
+                '182735469',
+                '739416825',
+                '675329148',
+                '214658793',
+                '893174256',
+                '948263571',
+                '367541982',
+                '521987634'
+            ];
+
+            poblarTablero(numeroTablero);
+            aparecerTablero();
+            break;
+
+        case '013':
+            numeroTablero = [
+                '-8--3-6--',
+                '--916----',
+                '-63---79-',
+                '----932--',
+                '-2-58----',
+                '---214---',
+                '34---6--2',
+                '-51-4---9',
+                '----7---4'
+            ];
+            numeroSolucion = [
+                '485739621',
+                '279168453',
+                '163425798',
+                '518693247',
+                '924587136',
+                '736214985',
+                '347956812',
+                '651842379',
+                '892371564'
+            ];
+
+            poblarTablero(numeroTablero);
+            aparecerTablero();
+            break;
+
+        case '014':
+            numeroTablero = [
+                '--821---3',
+                '6---95--1',
+                '--146---5',
+                '-35---64-',
+                '7---5---9',
+                '---634---',
+                '1---895--',
+                '--3-46---',
+                '57---38--'
+            ];
+            numeroSolucion = [
+                '458217963',
+                '627395481',
+                '391468275',
+                '835971642',
+                '764852319',
+                '219634758',
+                '142789536',
+                '983546127',
+                '576123894'
+            ];
+
+            poblarTablero(numeroTablero);
+            aparecerTablero();
+            break;
+
+        case '015':
+            numeroTablero = [
+                '--4826---',
+                '58---91--',
+                '--215----',
+                '----62--8',
+                '6-1-9---3',
+                '8---716-4',
+                '-186----5',
+                '3---15-8-',
+                '9--2---31'
+            ];
+            numeroSolucion = [
+                '194826357',
+                '586739142',
+                '732154869',
+                '479362518',
+                '651498723',
+                '823571694',
+                '218643975',
+                '347915286',
+                '965287431'
+            ]; 
+
+            poblarTablero(numeroTablero);
+            aparecerTablero();
+            break;
+
+        // ... otros casos ...
+        default:
+            console.log('Selecciona un nivel valido porfa')
     }
- 
+    return numeroTablero, numeroSolucion;
 }
 
-// intentar hacer todo en una function, y despues usar un switch-case 
-//para tomar el tablero segun el nivel elegido
+//la animacion de elegir nivel y que nos ponga para jugar
+function aparecerTablero() {
+    //que desaparezca el home con transition lindo
+    setTimeout(() => {
+        home.style.opacity = '0';
+        home.style.transitionDuration = '1s';
+    }, 300);
 
+    //que se haga el cambio de game a home
+    setTimeout(() => {
+        home.classList.add('hidden');
+        game.classList.remove('hidden')
+    }, 1500);
 
-
-
-
-
-// function limpiarCheckeds() {
-//     for (let i = 0; i < niveles.length; i++) {
-//         niveles[i].checked = false;
-//     }
-// }
-
-
-
-
-//apenas cargue la pag, se llena el tablero
-window.onload = function () {
-    poblarTablero();
+    //que aparezca el game con transition lindo
+    setTimeout(() => {
+        game.style.opacity = '100%';
+        game.style.transitionDuration = '1s';
+        btnJugar.removeAttribute('hidden');
+        btnJugar.style.opacity = '100';
+    }, 2000);
 }
 
-function poblarTablero() {
+//que nos complete el tablero del sudoku para  jugar
+function poblarTablero(numeroTablero) {
     
     // GRID DE LOS NUMEROS
 
@@ -507,8 +577,9 @@ function poblarTablero() {
             //aca llenamos el tablero con el arreglo del tablero que elijamos
             //ESTE EJEMPLO ES CON EL TABLERO1, SI QUIERO OTRO 
             //TENGO Q PONER TABLERO 2 en la condicion del IF y tmb abajo de eso
-            if (tablero1[r][c] != "-" ) {
-                celda.innerHTML = tablero1[r][c]
+            
+            if (numeroTablero[r][c] != "-" ) {
+                celda.innerHTML = numeroTablero[r][c]
             }
             
             //QUE NO HAGA HOVER CON LAS CELDAS QUE ESTABAN DESDE UN PRINCIPIO
@@ -551,8 +622,7 @@ function poblarTablero() {
 
 }
 
-
-
+//que nos lea el numero que elegimos para poner
 function leerNumeroSelec() {
     numeroSelec = this.textContent;
     numeroId = this.getAttribute('id');
@@ -572,6 +642,7 @@ function leerNumeroSelec() {
     return numeroSelec, numeroId
 }
 
+//que nos saque cuando tocamos otros numeros y nos seleccione el que tocamos
 function limpiarNumIguales() {
     numerosIguales = [];
 
@@ -587,18 +658,8 @@ function limpiarNumIguales() {
     
 }
 
-function agregarLocalStorage(arregloTablero) {
-    
-    localStorage.setItem('tablero', JSON.stringify(arregloTablero));
-    let arregloNumerosLS = JSON.parse(localStorage.getItem('tablero'));
-
-    
-    return arregloNumerosLS
-}
-
-
+//poner el numero qque elegimos en la celda
 function ponerNumero(celda) {
-
 
     //  ahora obtenemos la coordenada de la celda que puse 
     // para corroborar que este bien lo que estoy poniendo
@@ -611,14 +672,11 @@ function ponerNumero(celda) {
     if (numeroSelec != null && celda.textContent == '' || celda.classList.contains('numeroEquivocado')) {
 
         //comprobamos que el numero este bien segun la solucion
-        if (solucion1[r][c] == numeroSelec) {
+        if (numeroSolucion[r][c] == numeroSelec) {
             //si el nuemro seleccionado coincide con el indice de la solucion, joya
             celda.textContent = numeroSelec
             celda.classList.remove('numeroEquivocado');
             celda.classList.add('numeroBien', "bien");
-            // setTimeout(() => {
-            //     celda.style.color = "green"
-            // }, 1500);
             celda.classList.remove('celdaActiva');
 
             sumarArrBien(celda);
@@ -645,18 +703,17 @@ function ponerNumero(celda) {
     } else if (celda.textContent != '') {
         marcarNumerosIguales(celda);
 
-    } else if (numeroSelec === 10) { 
-        celda.textContent = '89'
-    }
+    } 
 
     arregloTablero = [];
     celdasArreglo.forEach(celda => {
         arregloTablero.push(celda.textContent);
-        agregarLocalStorage(arregloTablero);
     });
 
 }
 
+//cuando tocamos un numero que ya esta puesto, o que queremos elegir
+//, nos seleccione el resto que sean iguales
 function marcarNumerosIguales(celda) {
     let numeroCelda = celda.textContent
                 
@@ -669,6 +726,7 @@ function marcarNumerosIguales(celda) {
     })
 }
 
+//perder cuando llegamos a 3 errores
 function perderJuego(errores) {
     if (errores === 3) {
 
@@ -740,14 +798,16 @@ function perderJuego(errores) {
     }
 }
 
+//que nos deshabilite el numero que completamos los 9
 function sumarArrBien(celda) {
     if (celda.classList.contains('bien')) {
+       
         numerosBien.push(celda.textContent);
-        
-        const num1 = numerosBien.filter( num => num === '1' );
+
+        const num1 = numerosBien.filter( num => num == '1' );
         let num1Completo = num1.length
 
-        if (num1Completo === 9) {
+        if (num1Completo == 9) {
             let numero1 = document.getElementById('1')
             numero1.removeEventListener('click', leerNumeroSelec);
             numero1.classList.add('numeroCompleto');
@@ -912,6 +972,7 @@ let acumulado = 0
 const btnInicio = document.getElementById('btn-play')
 const btnPausa = document.getElementById('btn-pausa')
 const btnReset = document.getElementById('btn-reset')
+const btnHome = document.getElementById('btn-home')
 
 
 const btnJugar = document.getElementById('btn-jugar')
@@ -945,6 +1006,9 @@ function eventos() {
 
                 btnPausa.style.opacity = '100%';
                 btnPausa.style.transition = 'all 0.5s ease';
+
+                btnHome.style.opacity = '100%';
+                btnHome.style.transition = 'all 0.5s ease';
     
                 
             }, 1000);
@@ -952,6 +1016,7 @@ function eventos() {
             setTimeout(() => {
                 btnPausa.removeAttribute('hidden')
                 btnReset.removeAttribute('hidden')
+                btnHome.removeAttribute('hidden')
 
                 tableroCss.style.opacity = '100'
                 tableroCss.style.transition = 'all 0.5s ease';
@@ -1017,6 +1082,8 @@ function eventos() {
     btnPausa.addEventListener('click', pausarJuego)
 
     btnReset.addEventListener('click', resetJuego)
+
+    btnHome.addEventListener('click', irHome)
 
 }
 
@@ -1124,7 +1191,6 @@ function resetDesdeFinGano() {
 
     mensajeFin.removeChild(mensajeFin.children[0])
     // console.log(mensajeFin.children[0]) //
-    
 
     btnReset.style.opacity = '0'
     btnPausa.style.opacity = '0'
@@ -1275,6 +1341,78 @@ function resetDesdeFinPerdio() {
     limpiarNumIguales();
 }
 
+function irHome() {
+    var confirmar = confirm('¿Quieres volver al inicio? Se perdera el progreso que hayas hecho')
+    
+    if (confirmar) {
+        cronometrar = false
+        acumulado = 0
+        esPicable = false;
+
+        numeroSolucion = [];
+        
+        numeroTablero = [];
+        reestablecerNum();
+        
+        numerosBien = [];
+
+        celdasArreglo.forEach(celda => {
+           celda.remove();
+        })
+
+
+        numerosArreglo.forEach(numero => {
+            numero.remove();
+        })
+
+        setTimeout(() => {
+            game.style.opacity = '0';
+            game.style.transitionDuration = '1s';
+
+            let erroresHtml = document.querySelector('#errores')
+            errores = errores*0
+            erroresHtml.textContent = errores
+
+        }, 300);
+    
+        //que se haga el cambio de game a home
+        setTimeout(() => {
+            game.classList.add('hidden');
+            home.classList.remove('hidden')
+            tableroCss.style.opacity = '10%'
+            numerosContenedor.style.opacity = '10%'
+            
+        }, 1500);
+    
+        //que aparezca el game con transition lindo
+        setTimeout(() => {
+            home.style.opacity = '100';
+            home.style.transitionDuration = '1s';
+        }, 2000);
+
+
+        btnReset.style.opacity = '0'
+        btnPausa.style.opacity = '0'
+        btnInicio.style.opacity = '0'
+        btnHome.style.opacity = '0'
+        
+        btnReset.style.transition = 'all 0.8s ease'
+        btnPausa.style.transition = 'all 0.8s ease'
+        btnInicio.style.transition = 'all 0.8s ease'
+        btnHome.style.transition = 'all 0.8s ease'
+
+        erroresCss.style.scale  = '100%';
+        erroresCss.style.transition = 'all 1s ease'
+        tiempo.style.scale  = '100%';
+        tiempo.style.transition = 'all 1s ease'
+
+
+        
+    }
+
+    
+}
+
 function reestablecerNum() {
     
     numerosBien = [];
@@ -1326,9 +1464,6 @@ function reestablecerNum() {
 
 }
 
-function resetPerder() {
-
-}
 
 setInterval(() => {
     
