@@ -214,6 +214,7 @@ body {
 
 #btn-home {
     opacity: 0;
+    width: 40px;
 }
 #btn-home:hover {
     scale: 110%;
