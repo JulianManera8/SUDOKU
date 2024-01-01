@@ -2,9 +2,6 @@
 
 ------------TODOLIST------------
 
-
-    - que funcione el home desde mensaje perder y ganar
-
     - hacer un tutorial de como se juega si es laprimera vez que uno juega, un video asi nomas abajo,que para acceder te tire un mensaje por el costadode: ver tutorial rapido de como se juega.
 
     -que funcione el siguiente nivel desde ganar

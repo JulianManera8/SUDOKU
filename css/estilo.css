@@ -864,6 +864,10 @@ button:hover .button-text {
     
 }
 
+.regla {
+    margin-bottom: 5px;
+}
+
 .info-container h4 {
     font-family: 'Nunito Sans', sans-serif;
     text-transform: uppercase;
@@ -873,6 +877,11 @@ button:hover .button-text {
     
 }
 
+.video {
+    scale: 90%;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.601);
+    border-radius: 1rem;
+}
 
 /*------------BTN VOLVER------------*/
 
