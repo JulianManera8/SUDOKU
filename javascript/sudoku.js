@@ -707,7 +707,7 @@ function ponerNumero(celda) {
         
         }  else {
             //si no conicide, aumentamos el error
-            // errores++;
+            errores++;
             const divErrores = document.getElementById('errores').innerHTML = errores
             
             perderJuego(errores);
